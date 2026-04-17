@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py --version)",
+      "Bash(npx --version)",
+      "WebSearch",
+      "Bash(rm -rf sections/)",
+      "Bash(rm -f index.html index2.html index.txt serve.bat)",
+      "Bash(rm -f assets/css/animate.css assets/css/default.css assets/css/lineicons.css assets/css/milestone.css assets/css/style.css assets/css/style.css.map assets/css/travion.css assets/css/bootstrap.min.css)",
+      "Bash(rm -f assets/js/bootstrap.min.js assets/js/home_ui.js assets/js/jquery.easing.min.js assets/js/main.js assets/js/popper.min.js assets/js/scrolling-nav.js assets/js/wow.min.js assets/js/travion-contact.js assets/js/travion-fx.js assets/js/travion-hero.js assets/js/travion-includes.js)",
+      "Bash(rm -rf assets/js/vendor)"
+    ]
+  }
+}

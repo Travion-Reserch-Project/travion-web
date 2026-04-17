@@ -1,1455 +1,905 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Travion — Smart AI Tour Planner for Sri Lanka</title>
-    <meta name="description" content="Travion is an AI-powered tour planning mobile app for Sri Lanka featuring smart transportation, RAG chatbot, safety alerts and UV health care.">
+    <meta name="description" content="Travion is an AI-powered tour planning mobile app for Sri Lanka featuring smart multi-modal transport, RAG chatbot, real-time safety alerts and personalised UV health guidance.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07091a">
 
-    <link rel="shortcut icon" href="assets/images/team_images/icons/icon.png" type="image/png">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/team_images/icons/icon.png" type="image/png">
 
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/lineicons.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/default.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/milestone.css">
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <!-- Google Fonts — Space Grotesk (display), Inter (body), Playfair Display (italic accents) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!--====== TRAVION theme override — must be last ======-->
-    <link rel="stylesheet" href="assets/css/travion.css">
+    <!-- Splitting (char/word splitting for text animations) -->
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting-cells.css">
 
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!-- Swiper (kept in case needed) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- Theme -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-    <!--====== PRELOADER ======-->
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left"><div class="ytp-spinner-circle"></div></div>
-                        <div class="ytp-spinner-right"><div class="ytp-spinner-circle"></div></div>
-                    </div>
-                </div>
-            </div>
+    <!-- Ambient background layers -->
+    <div class="bg-fx"></div>
+    <div class="grain"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="logo-loader">
+            <div class="ring"></div>
+            <span>Travion</span>
         </div>
     </div>
 
-    <!--====== HEADER ======-->
-    <header class="header-area">
-        <div class="navbar-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
-                                <span class="brand-mark"><i class="fa-solid fa-compass"></i></span>
-                                <span class="brand-name">Travion</span>
-                            </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
+    <!-- Scroll progress -->
+    <div class="progress-bar" id="progressBar"></div>
 
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul id="nav" class="navbar-nav ml-auto">
-                                    <li class="nav-item active">
-                                        <a class="page-scroll nav-hide scroller" href="#home">Home</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Project Scope</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#literature">Literature Survey</a></li>
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#research_gap">Research Gap</a></li>
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#research_problem">Research Problem</a></li>
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#research_objectives">Research Objectives</a></li>
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#research_Method">Methodology</a></li>
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#technology">Technologies Used</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll nav-hide scroller" href="#milestones">Roadmap</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Downloads</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#document">Documents</a></li>
-                                            <li class="nav-item sub-nav-item"><a class="nav-hide page-scroll scroller" href="#presentation">Presentations</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll nav-hide scroller" href="#team">About Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll nav-hide scroller" href="#contact">Contact Us</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
+    <!-- Custom cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar" id="navbar">
+        <a class="brand" href="#home">
+            <span class="brand-mark"><i class="fa-solid fa-compass"></i></span>
+            <span>Travion</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li class="dropdown">
+                <span>Project Scope</span>
+                <div class="dropdown-panel">
+                    <a href="#literature">Literature Survey</a>
+                    <a href="#research_gap">Research Gap</a>
+                    <a href="#research_problem">Research Problem</a>
+                    <a href="#research_objectives">Research Objectives</a>
+                    <a href="#research_method">Methodology</a>
+                    <a href="#technology">Technologies Used</a>
                 </div>
-            </div>
+            </li>
+            <li><a href="#milestones">Roadmap</a></li>
+            <li class="dropdown">
+                <span>Downloads</span>
+                <div class="dropdown-panel">
+                    <a href="#document">Documents</a>
+                    <a href="#presentation">Presentations</a>
+                </div>
+            </li>
+            <li><a href="#team">About</a></li>
+            <li><a href="#contact" class="nav-cta">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
+        </ul>
+
+        <button class="burger" id="burger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ====== HERO (V2 — Cinematic phone showcase) ====== -->
+    <header class="hero-x" id="home">
+        <!-- Animated gradient mesh -->
+        <div class="hero-mesh">
+            <div class="blob b-a"></div>
+            <div class="blob b-b"></div>
+            <div class="blob b-c"></div>
         </div>
+        <div class="dot-grid"></div>
 
-        <!--====== HERO ======-->
-        <div id="home"></div>
-
-        <!-- Video background (multiple sources for fallback) -->
-        <div class="hero-video-bg">
-            <video autoplay muted loop playsinline preload="auto" id="heroVideo">
-                <source src="https://cdn.pixabay.com/video/2020/08/30/48569-454270958_large.mp4" type="video/mp4">
-                <source src="https://cdn.coverr.co/videos/coverr-tropical-beach-drone-view-2633/1080p.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <!-- SVG cinematic Sri Lankan landscape scene (also works if video fails) -->
-        <div class="hero-scene" id="heroScene">
-            <div class="sun" data-depth="0.3"></div>
-            <div class="layer layer-clouds" data-depth="0.5">
-                <div class="cloud c1"></div>
-                <div class="cloud c2"></div>
-                <div class="cloud c3"></div>
-            </div>
-            <svg class="layer layer-mountains" data-depth="0.8" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="mt1" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0" stop-color="#2C2C44" stop-opacity="0.85"/>
-                        <stop offset="1" stop-color="#0F0F1E" stop-opacity="0.95"/>
-                    </linearGradient>
-                    <linearGradient id="mt2" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0" stop-color="#E85A00" stop-opacity="0.4"/>
-                        <stop offset="1" stop-color="#1A1A2E" stop-opacity="0.85"/>
-                    </linearGradient>
-                </defs>
-                <!-- back hills -->
-                <path d="M0 350 L120 260 L260 320 L400 220 L560 300 L720 180 L880 280 L1040 200 L1200 300 L1440 240 L1440 500 L0 500 Z" fill="url(#mt2)"/>
-                <!-- Sigiriya-like silhouette -->
-                <path d="M620 320 L660 180 L680 170 L720 165 L740 170 L760 180 L790 320 Z" fill="url(#mt1)"/>
-                <!-- front mountains -->
-                <path d="M0 440 L140 360 L280 420 L440 320 L600 400 L760 340 L920 410 L1080 320 L1240 400 L1440 350 L1440 500 L0 500 Z" fill="url(#mt1)"/>
-            </svg>
-            <svg class="layer layer-palms" data-depth="1.2" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-                <g fill="#0A0E1A" opacity="0.9">
-                    <!-- palm 1 -->
-                    <g transform="translate(80 400)">
-                        <path d="M0 0 Q-6 -120 -14 -200 L14 -200 Q6 -120 0 0 Z"/>
-                        <path d="M-14 -200 Q-70 -230 -110 -200 Q-60 -210 -14 -190 Z"/>
-                        <path d="M14 -200 Q70 -230 110 -200 Q60 -210 14 -190 Z"/>
-                        <path d="M-14 -205 Q-40 -260 -90 -270 Q-30 -240 -10 -200 Z"/>
-                        <path d="M14 -205 Q40 -260 90 -270 Q30 -240 10 -200 Z"/>
-                        <path d="M-10 -210 Q0 -280 40 -290 Q0 -250 -5 -205 Z"/>
-                    </g>
-                    <!-- palm 2 -->
-                    <g transform="translate(1320 400) scale(-1 1)">
-                        <path d="M0 0 Q-6 -140 -14 -220 L14 -220 Q6 -140 0 0 Z"/>
-                        <path d="M-14 -220 Q-80 -250 -130 -220 Q-70 -230 -14 -210 Z"/>
-                        <path d="M14 -220 Q80 -250 130 -220 Q70 -230 14 -210 Z"/>
-                        <path d="M-14 -225 Q-50 -290 -100 -300 Q-40 -260 -10 -220 Z"/>
-                        <path d="M14 -225 Q50 -290 100 -300 Q40 -260 10 -220 Z"/>
-                    </g>
-                    <!-- distant small palms -->
-                    <g transform="translate(260 400) scale(0.55)">
-                        <path d="M0 0 Q-5 -120 -12 -200 L12 -200 Q5 -120 0 0 Z"/>
-                        <path d="M-12 -200 Q-60 -230 -100 -200 Q-50 -210 -12 -190 Z"/>
-                        <path d="M12 -200 Q60 -230 100 -200 Q50 -210 12 -190 Z"/>
-                    </g>
-                    <g transform="translate(1180 400) scale(0.6)">
-                        <path d="M0 0 Q-5 -120 -12 -200 L12 -200 Q5 -120 0 0 Z"/>
-                        <path d="M-12 -200 Q-60 -230 -100 -200 Q-50 -210 -12 -190 Z"/>
-                        <path d="M12 -200 Q60 -230 100 -200 Q50 -210 12 -190 Z"/>
-                    </g>
-                </g>
-            </svg>
-            <svg class="layer layer-ocean" data-depth="1.5" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="oc" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0" stop-color="#FF7A1A" stop-opacity="0.25"/>
-                        <stop offset="1" stop-color="#0A0E1A" stop-opacity="1"/>
-                    </linearGradient>
-                </defs>
-                <path d="M0 60 Q240 30 480 60 T960 60 T1440 60 L1440 200 L0 200 Z" fill="url(#oc)">
-                    <animate attributeName="d"
-                        dur="6s" repeatCount="indefinite"
-                        values="M0 60 Q240 30 480 60 T960 60 T1440 60 L1440 200 L0 200 Z;
-                                M0 60 Q240 90 480 60 T960 60 T1440 60 L1440 200 L0 200 Z;
-                                M0 60 Q240 30 480 60 T960 60 T1440 60 L1440 200 L0 200 Z"/>
-                </path>
-            </svg>
-        </div>
-
-        <!-- canvas particles (fireflies) -->
-        <canvas id="hero-particles"></canvas>
+        <!-- Flying paper-plane path (decorative) -->
+        <svg class="fly-path" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="flyGrad" x1="0" x2="1">
+                    <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+                    <stop offset="0.3" stop-color="#22d3ee"/>
+                    <stop offset="0.7" stop-color="#ec4899"/>
+                    <stop offset="1" stop-color="#ec4899" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+            <path class="fl-path" d="M0,80 Q300,10 600,60 T1200,30" fill="none" stroke="url(#flyGrad)" stroke-width="2" stroke-dasharray="8 8"/>
+        </svg>
+        <div class="flying-plane"><i class="fa-solid fa-paper-plane"></i></div>
 
         <div class="container">
-            <div class="new-header">
-                <div class="hero-grid">
-                    <div class="header-hero-content">
-                        <div class="eyebrow">
-                            <span class="dot"><i class="fa-solid fa-bolt"></i></span>
-                            AI-Powered Sri Lanka Travel · 2026
-                        </div>
-                        <h1 class="hero-title">
-                            <span class="line">Plan smarter.</span>
-                            <span class="line">Travel <span class="grad">safer.</span></span>
-                            <span class="line">Discover <span class="grad"><span class="typed-wrap"><span class="typed-text" id="typedText">Ceylon</span><span class="typed-cursor"></span></span>.</span></span>
-                        </h1>
-                        <p class="hero-sub">
-                            Travion is your AI-powered mobile companion for every adventure across the Pearl of the
-                            Indian Ocean — from agentic trip planning and smart transport to real-time safety and UV
-                            health guardianship. Pack lighter. Explore deeper.
-                        </p>
-                        <div class="hero-ctas">
-                            <a href="#research_objectives" class="btn-travion">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> Explore Features
-                                <i class="fa-solid fa-arrow-right arrow"></i>
-                            </a>
-                            <a href="#home" class="btn-travion ghost" id="watchDemoBtn">
-                                <i class="fa-solid fa-play"></i> Watch Demo
-                            </a>
-                        </div>
-                        <div class="hero-stats">
-                            <div class="hero-stat"><div class="n" data-count="25">0</div><div class="l">Cities Covered</div></div>
-                            <div class="hero-stat"><div class="n" data-count="4">0</div><div class="l">AI Modules</div></div>
-                            <div class="hero-stat"><div class="n" data-count="1000" data-suffix="+">0</div><div class="l">POIs Mapped</div></div>
-                            <div class="hero-stat"><div class="n static">24/7</div><div class="l">Live Safety</div></div>
-                        </div>
+            <div class="hero-grid">
+
+                <!-- LEFT COLUMN -->
+                <div class="hero-copy">
+                    <div class="badge-live">
+                        <span class="pulse"></span>
+                        <span>AI Travel Intelligence</span>
+                        <span class="divider-v"></span>
+                        <span>2026 Edition</span>
                     </div>
 
-                    <div class="hero-visual">
-                        <div class="orbit-chip o1">
-                            <div class="ico c1"><i class="fa-solid fa-bus"></i></div>
-                            <div class="tx">Smart Transport<span>Next bus · 5 min</span></div>
-                        </div>
-                        <div class="orbit-chip o2">
-                            <div class="ico c2"><i class="fa-solid fa-robot"></i></div>
-                            <div class="tx">AI Trip Planner<span>7-day plan ready</span></div>
-                        </div>
-                        <div class="orbit-chip o3">
-                            <div class="ico c3"><i class="fa-solid fa-shield-halved"></i></div>
-                            <div class="tx">Safety Alert<span>All zones clear</span></div>
-                        </div>
-                        <div class="orbit-chip o4">
-                            <div class="ico c4"><i class="fa-solid fa-sun"></i></div>
-                            <div class="tx">UV Index 9<span>Apply SPF 50+</span></div>
-                        </div>
+                    <h1 class="display" data-split>
+                        <span class="l">Plan smarter.</span>
+                        <span class="l">Travel <em class="grad">safer.</em></span>
+                        <span class="l">Discover <span class="typed-wrap"><span class="grad" id="typedText">Ceylon</span><span class="typed-cursor"></span></span>.</span>
+                    </h1>
 
-                        <div class="hero-phone">
-                            <div class="phone-screen">
-                                <div class="screen-header">
-                                    <div class="greet">Ayubowan 👋</div>
-                                    <div class="user">Let's plan your Sri Lanka trip</div>
+                    <p class="lede-big" data-split-words>
+                        Your AI-powered mobile companion for every adventure across the Pearl of the Indian Ocean — agentic trip planning, smart multi-modal transport, real-time safety and UV health guardianship. Pack lighter. Explore deeper.
+                    </p>
+
+                    <div class="hero-ctas">
+                        <a href="#research_objectives" class="btn-x btn-primary-x">
+                            <span class="bx-inner">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                Explore Features
+                                <i class="fa-solid fa-arrow-right arrow"></i>
+                            </span>
+                            <span class="bx-shine"></span>
+                        </a>
+                        <a href="#demo" class="btn-x btn-ghost-x" id="watchDemoBtn">
+                            <span class="bx-inner">
+                                <span class="play-ic"><i class="fa-solid fa-play"></i></span>
+                                Watch Demo
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="live-stats">
+                        <div class="stat-x"><div class="sx-top"><i class="fa-solid fa-location-dot"></i><div class="n" data-count="25" data-suffix="+">0</div></div><div class="sx-lbl">Cities</div></div>
+                        <div class="stat-x"><div class="sx-top"><i class="fa-solid fa-brain"></i><div class="n" data-count="4">0</div></div><div class="sx-lbl">AI Modules</div></div>
+                        <div class="stat-x"><div class="sx-top"><i class="fa-solid fa-map-pin"></i><div class="n" data-count="1000" data-suffix="+">0</div></div><div class="sx-lbl">POIs</div></div>
+                        <div class="stat-x"><div class="sx-top"><i class="fa-solid fa-shield-halved"></i><div class="n">24/7</div></div><div class="sx-lbl">Safety</div></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN — PHONE STAGE -->
+                <div class="phone-stage" id="phoneStage">
+                    <div class="ring-orbit ro-a"></div>
+                    <div class="ring-orbit ro-b"></div>
+
+                    <!-- Polaroid snapshots -->
+                    <div class="polaroid pol-1">
+                        <img src="https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?q=80&w=260&auto=format&fit=crop" alt="Tea country">
+                        <div>Tea Country</div>
+                    </div>
+                    <div class="polaroid pol-2">
+                        <img src="https://images.unsplash.com/photo-1566369421085-c95bf99c5a95?q=80&w=260&auto=format&fit=crop" alt="Mirissa">
+                        <div>Mirissa</div>
+                    </div>
+
+                    <!-- Phone device -->
+                    <div class="phone-x" id="phoneX">
+                        <div class="ph-glow"></div>
+                        <div class="ph-frame">
+                            <div class="ph-notch"></div>
+                            <div class="ph-screen">
+                                <div class="ph-status">
+                                    <span>9:42</span>
+                                    <div class="ph-bars">
+                                        <i class="fa-solid fa-signal"></i>
+                                        <i class="fa-solid fa-wifi"></i>
+                                        <i class="fa-solid fa-battery-three-quarters"></i>
+                                    </div>
                                 </div>
-                                <div class="screen-body">
-                                    <div class="mock-card">
-                                        <div class="mc-ico"><i class="fa-solid fa-train"></i></div>
-                                        <div class="mc-tx">Train to Ella<span>Dep 08:30 · LKR 500</span></div>
+
+                                <div class="ph-slides" id="phSlides">
+                                    <!-- SLIDE 1 — Day plan -->
+                                    <div class="ph-slide ps-1 active">
+                                        <div class="ps-cover">
+                                            <img src="https://images.unsplash.com/photo-1591294391014-1f6a53055e03?q=80&w=500&auto=format&fit=crop" alt="Sri Lanka">
+                                            <div class="ps-cover-over">
+                                                <div class="ps-tag">Day 1 · Colombo → Kandy</div>
+                                                <div class="ps-head">Cultural Triangle <em>Adventure</em></div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-body">
+                                            <div class="ai-typing">
+                                                <span class="dots"><i></i><i></i><i></i></span>
+                                                AI crafting your 7-day plan…
+                                            </div>
+                                            <ul class="ps-plan">
+                                                <li><span class="pp-t">09:00</span><span class="pp-ic c1"><i class="fa-solid fa-mug-saucer"></i></span><span class="pp-tx">Breakfast · Galle Face<small>Colombo · beach view</small></span></li>
+                                                <li><span class="pp-t">11:30</span><span class="pp-ic c2"><i class="fa-solid fa-train"></i></span><span class="pp-tx">Scenic Train to Kandy<small>LKR 500 · 3h</small></span></li>
+                                                <li><span class="pp-t">15:00</span><span class="pp-ic c3"><i class="fa-solid fa-place-of-worship"></i></span><span class="pp-tx">Temple of the Tooth<small>Kandy · UNESCO</small></span></li>
+                                                <li><span class="pp-t">19:00</span><span class="pp-ic c4"><i class="fa-solid fa-utensils"></i></span><span class="pp-tx">Lakeside Dinner<small>Sunset · rice & curry</small></span></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="mock-card">
-                                        <div class="mc-ico b"><i class="fa-solid fa-robot"></i></div>
-                                        <div class="mc-tx">AI Itinerary Ready<span>5-day cultural triangle</span></div>
+
+                                    <!-- SLIDE 2 — Map route -->
+                                    <div class="ph-slide ps-2">
+                                        <div class="ps-map">
+                                            <svg viewBox="0 0 300 420" preserveAspectRatio="none">
+                                                <defs>
+                                                    <linearGradient id="rt" x1="0" x2="1" y1="0" y2="1">
+                                                        <stop offset="0" stop-color="#22d3ee"/>
+                                                        <stop offset="0.5" stop-color="#8b5cf6"/>
+                                                        <stop offset="1" stop-color="#ec4899"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <rect width="300" height="420" fill="#0b0f2a"/>
+                                                <path d="M0,80 Q100,40 200,110 T300,70" stroke="rgba(255,255,255,.06)" stroke-width="1" fill="none"/>
+                                                <path d="M0,200 Q140,170 240,230" stroke="rgba(255,255,255,.05)" stroke-width="1" fill="none"/>
+                                                <path d="M20,340 Q120,290 280,320" stroke="rgba(255,255,255,.05)" stroke-width="1" fill="none"/>
+                                                <path id="mapRoute" d="M60,80 Q140,140 100,240 T240,360" stroke="url(#rt)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="500" stroke-dashoffset="500"/>
+                                                <circle cx="60" cy="80" r="9" fill="#22d3ee"/>
+                                                <circle cx="60" cy="80" r="9" fill="#22d3ee" opacity="0.4"><animate attributeName="r" from="9" to="20" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.5" to="0" dur="1.6s" repeatCount="indefinite"/></circle>
+                                                <circle cx="240" cy="360" r="9" fill="#ec4899"/>
+                                                <circle cx="240" cy="360" r="9" fill="#ec4899" opacity="0.4"><animate attributeName="r" from="9" to="20" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.5" to="0" dur="1.6s" repeatCount="indefinite"/></circle>
+                                            </svg>
+                                            <div class="map-pin mp-1">Colombo</div>
+                                            <div class="map-pin mp-2">Ella</div>
+                                            <div class="map-stats">
+                                                <div><i class="fa-solid fa-road"></i> 230 km</div>
+                                                <div><i class="fa-regular fa-clock"></i> 7h 20m</div>
+                                                <div><i class="fa-solid fa-bus"></i> Multi-modal</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mock-card">
-                                        <div class="mc-ico r"><i class="fa-solid fa-shield-halved"></i></div>
-                                        <div class="mc-tx">Safety OK<span>No alerts near Kandy</span></div>
+
+                                    <!-- SLIDE 3 — Weather / UV -->
+                                    <div class="ph-slide ps-3">
+                                        <div class="ps-wx">
+                                            <div class="wx-top">
+                                                <div class="wx-sun"><i class="fa-solid fa-sun"></i></div>
+                                                <div class="wx-temp">28°</div>
+                                                <div class="wx-loc">Kandy · Clear skies</div>
+                                            </div>
+                                            <div class="wx-bars">
+                                                <div class="wx-bar"><span>UV Index</span><div class="bar"><div class="fill" style="--w:85%;background:linear-gradient(90deg,#ffd166,#ff6b4a)"></div></div><span>8</span></div>
+                                                <div class="wx-bar"><span>Humidity</span><div class="bar"><div class="fill" style="--w:72%;background:linear-gradient(90deg,#22d3ee,#4f8cff)"></div></div><span>72%</span></div>
+                                                <div class="wx-bar"><span>Hydration</span><div class="bar"><div class="fill" style="--w:60%;background:linear-gradient(90deg,#06d6a0,#22d3ee)"></div></div><span>3/5L</span></div>
+                                            </div>
+                                            <div class="wx-tip"><i class="fa-solid fa-droplet"></i> Apply SPF 50+. Drink 500ml in next hour.</div>
+                                        </div>
                                     </div>
-                                    <div class="mock-card">
-                                        <div class="mc-ico y"><i class="fa-solid fa-sun"></i></div>
-                                        <div class="mc-tx">UV Index 8<span>Apply SPF 50+</span></div>
-                                    </div>
+                                </div>
+
+                                <div class="ph-dots" id="phDots">
+                                    <i class="active" data-i="0"></i><i data-i="1"></i><i data-i="2"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Orbiting chips -->
+                    <div class="orbit-chip oc-1"><i class="fa-solid fa-bus"></i><div><strong>5 min</strong><small>Next bus</small></div></div>
+                    <div class="orbit-chip oc-2"><i class="fa-solid fa-robot"></i><div><strong>7-day</strong><small>AI plan</small></div></div>
+                    <div class="orbit-chip oc-3"><i class="fa-solid fa-shield-halved"></i><div><strong>Clear</strong><small>All zones</small></div></div>
+                    <div class="orbit-chip oc-4"><i class="fa-solid fa-sun"></i><div><strong>UV 9</strong><small>SPF 50+</small></div></div>
                 </div>
             </div>
         </div>
 
-        <!-- destination ticker -->
-        <div class="hero-ticker">
-            <div class="track">
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Sigiriya Rock Fortress</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Ella Nine Arch Bridge</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Galle Dutch Fort</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Temple of the Tooth, Kandy</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Mirissa Whale Watching</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Yala Safari</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Adam's Peak</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Nuwara Eliya Tea Country</span>
-                <!-- duplicate for seamless loop -->
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Sigiriya Rock Fortress</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Ella Nine Arch Bridge</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Galle Dutch Fort</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Temple of the Tooth, Kandy</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Mirissa Whale Watching</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Yala Safari</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Adam's Peak</span>
-                <span class="t-item"><i class="fa-solid fa-location-dot"></i> Nuwara Eliya Tea Country</span>
+        <!-- Destination ticker -->
+        <div class="ticker">
+            <div class="ticker-track">
+                <span><i class="fa-solid fa-location-dot"></i> Sigiriya Rock Fortress</span>
+                <span><i class="fa-solid fa-location-dot"></i> Ella Nine Arch Bridge</span>
+                <span><i class="fa-solid fa-location-dot"></i> Galle Dutch Fort</span>
+                <span><i class="fa-solid fa-location-dot"></i> Temple of the Tooth, Kandy</span>
+                <span><i class="fa-solid fa-location-dot"></i> Mirissa Whale Watching</span>
+                <span><i class="fa-solid fa-location-dot"></i> Yala Safari</span>
+                <span><i class="fa-solid fa-location-dot"></i> Adam's Peak</span>
+                <span><i class="fa-solid fa-location-dot"></i> Nuwara Eliya Tea Country</span>
+                <span><i class="fa-solid fa-location-dot"></i> Sigiriya Rock Fortress</span>
+                <span><i class="fa-solid fa-location-dot"></i> Ella Nine Arch Bridge</span>
+                <span><i class="fa-solid fa-location-dot"></i> Galle Dutch Fort</span>
+                <span><i class="fa-solid fa-location-dot"></i> Temple of the Tooth, Kandy</span>
+                <span><i class="fa-solid fa-location-dot"></i> Mirissa Whale Watching</span>
+                <span><i class="fa-solid fa-location-dot"></i> Yala Safari</span>
+                <span><i class="fa-solid fa-location-dot"></i> Adam's Peak</span>
+                <span><i class="fa-solid fa-location-dot"></i> Nuwara Eliya Tea Country</span>
             </div>
         </div>
 
-        <!-- scroll indicator -->
-        <div class="scroll-indicator">
-            <span class="mouse"></span>
-            Scroll to explore
-        </div>
+        <div class="scroll-hint"><span class="mouse"></span> Scroll to explore</div>
+
+        <!-- Wave transition into next section -->
+        <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z"/>
+        </svg>
     </header>
 
-    <!--====== LITERATURE SURVEY PART START ======-->
+    <main>
 
-    <section id="literature" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Literature Survey</h3>
-                        <p class="text">AI-driven tourism intelligence for smarter, safer travel in Sri Lanka</p>
+        <!-- ====== LITERATURE SURVEY ====== -->
+        <section id="literature" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Research Foundation</span>
+                    <h2 class="title">Literature <span class="hl">Survey</span></h2>
+                    <p class="lede">AI-driven tourism intelligence for smarter, safer travel in Sri Lanka</p>
+                </div>
+
+                <div class="lit-wrap">
+                    <article class="lit-card reveal">
+                        <div class="lit-head">
+                            <div class="lit-num">01</div>
+                            <h3 class="lit-title">Smart Transportation Recommendation System</h3>
+                        </div>
+                        <p class="lit-body">
+                            Traditional transport recommenders such as Google Maps [1] and Moovit [2] provide route planning using static schedules and traffic data. However, they lack contextual adaptation for developing-country transport ecosystems such as Sri Lanka's mix of trains, buses, tuk-tuks and private hires. Recent work on multi-modal transit optimization [3] introduces graph-neural-network-based routing that accounts for real-time delays and crowd density. Study [4] proposes a reinforcement-learning fare predictor for informal transport in Southeast Asia, achieving 91 % accuracy on tuk-tuk pricing but limited to Bangkok only. A tourism-specific recommender [5] integrates weather and cultural-event calendars into route scoring, yet still relies on pre-computed timetables rather than live feeds. Existing systems fail to combine real-time multi-modal data with traveller preference learning and fair-fare prediction in a single Sri Lanka-focused module.
+                        </p>
+                        <details class="lit-refs">
+                            <summary>References</summary>
+                            <ol>
+                                <li>Google LLC, "Google Maps Platform — Routes API," [Online]. Available: https://developers.google.com/maps/documentation/routes.</li>
+                                <li>Moovit Inc., "Moovit — Smart Public Transit App," [Online]. Available: https://moovit.com.</li>
+                                <li>Z. Wang, Y. Li and K. Chen, "GNN-Transit: Graph Neural Network Based Multi-Modal Route Optimization," IEEE Transactions on Intelligent Transportation Systems, vol. 24, no. 8, pp. 1–12, 2023.</li>
+                                <li>P. Chaikaew and S. Nontapa, "Reinforcement Learning-Based Fare Prediction for Informal Transit in Southeast Asia," Proceedings of the ACM SIGSPATIAL, 2022, pp. 45–54.</li>
+                                <li>A. Perera, D. Jayawardena and R. Gunawardena, "Context-Aware Tourist Route Recommender with Weather and Event Integration," 2023 International Conference on Advances in Computing (ICAC), pp. 112–118.</li>
+                            </ol>
+                        </details>
+                    </article>
+
+                    <article class="lit-card reveal">
+                        <div class="lit-head">
+                            <div class="lit-num">02</div>
+                            <h3 class="lit-title">RAG-Based Agentic Tour Planning Chatbot</h3>
+                        </div>
+                        <p class="lit-body">
+                            Conversational AI for tourism has evolved from rule-based chatbots [6] to large-language-model (LLM) assistants. ChatGPT-based travel planners [7] generate plausible itineraries but suffer from hallucinated facts and stale knowledge. Retrieval-Augmented Generation (RAG) [8] mitigates this by grounding LLM outputs in a curated vector knowledge base, dramatically improving factual accuracy. Agentic LLM frameworks such as LangGraph [9] and AutoGen [10] enable multi-step tool-use workflows where the model autonomously searches, books and re-plans. However, no existing system combines RAG with agentic tool-use specifically for Sri Lankan tourism — a domain that requires local cultural nuance, Sinhala/Tamil language support and integration with fragmented local booking APIs.
+                        </p>
+                        <details class="lit-refs">
+                            <summary>References</summary>
+                            <ol>
+                                <li>B. Abu Shawar and E. Atwell, "Chatbots: Are They Really Useful?," Journal for Language Technology and Computational Linguistics, vol. 22, no. 1, pp. 29–49, 2007.</li>
+                                <li>S. Mao, D. Mathew and R. Joshi, "ChatTravel: LLM-Powered Itinerary Generation — Promises and Pitfalls," ACM Conference on AI for Tourism, 2024, pp. 1–10.</li>
+                                <li>P. Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," Advances in Neural Information Processing Systems (NeurIPS), vol. 33, 2020.</li>
+                                <li>LangChain Inc., "LangGraph: Build Stateful Multi-Agent Applications," [Online]. Available: https://github.com/langchain-ai/langgraph.</li>
+                                <li>Q. Wu et al., "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation," arXiv preprint arXiv:2308.08155, 2023.</li>
+                            </ol>
+                        </details>
+                    </article>
+
+                    <article class="lit-card reveal">
+                        <div class="lit-head">
+                            <div class="lit-num">03</div>
+                            <h3 class="lit-title">Smart Safety Alert System</h3>
+                        </div>
+                        <p class="lit-body">
+                            Tourist safety systems range from government travel-advisory portals [11] to crowd-sourced incident apps like Citizen [12]. Geofencing-based alert platforms [13] trigger notifications when users enter predefined risk zones, while weather-event detection models [14] use LSTM networks to forecast flash floods with 87 % recall. Wildlife-proximity warning systems using IoT sensors have been deployed in African safari parks [15] but remain absent in Sri Lankan reserves such as Yala and Wilpattu, where elephant-human encounters are frequent. Current solutions are siloed: weather, wildlife and crime alerts exist on separate platforms with no unified real-time pipeline or offline fallback for low-connectivity wilderness areas.
+                        </p>
+                        <details class="lit-refs">
+                            <summary>References</summary>
+                            <ol>
+                                <li>U.S. Department of State, "Travel Advisories," [Online]. Available: https://travel.state.gov/content/travel/en/traveladvisories.</li>
+                                <li>Citizen App Inc., "Citizen — Connect and Stay Safe," [Online]. Available: https://citizen.com.</li>
+                                <li>M. Al-Turjman, "Geofencing-Based Safety Alert Framework for Smart Tourism," IEEE Internet of Things Journal, vol. 10, no. 4, 2023.</li>
+                                <li>R. Fernando and K. Silva, "LSTM-Based Flash Flood Prediction for Tropical River Basins," 2022 International Conference on Data Science (ICDS), pp. 201–207.</li>
+                                <li>J. Kamau, T. Otieno and L. Mwangi, "IoT-Enabled Wildlife Proximity Warning System for Safari Parks," Sensors, vol. 22, no. 12, 2022.</li>
+                            </ol>
+                        </details>
+                    </article>
+
+                    <article class="lit-card reveal">
+                        <div class="lit-head">
+                            <div class="lit-num">04</div>
+                            <h3 class="lit-title">Smart High-UV Health Care System</h3>
+                        </div>
+                        <p class="lit-body">
+                            UV exposure monitoring has been explored through wearable sensors [16] and smartphone-based UV index estimators [17]. The WHO Global Solar UV Index [18] provides standardised daily readings but lacks personalised guidance based on skin type, altitude and activity duration. A dermatology-focused app [19] uses the Fitzpatrick scale and satellite UV data to recommend sunscreen SPF levels, achieving 94 % user satisfaction in Australian trials. However, it does not integrate hydration tracking or heatstroke risk assessment, which are critical in tropical climates. Study [20] introduces a multi-sensor fusion approach combining UV, temperature and humidity for real-time heat-stress alerts in outdoor workers but has not been adapted for tourism contexts. No existing system delivers holistic UV-plus-heat health guidance personalised to travellers in Sri Lanka's diverse climate zones — from humid coastal beaches to cool hill-country elevations.
+                        </p>
+                        <details class="lit-refs">
+                            <summary>References</summary>
+                            <ol>
+                                <li>L. Gao, Y. Zhang and H. Kim, "Wearable UV Dosimeters: A Systematic Review," Photochemistry and Photobiology, vol. 98, no. 3, pp. 512–525, 2022.</li>
+                                <li>D. Banerjee and P. Agrawal, "Smartphone-Based Real-Time UV Index Estimation Using Camera Sensors," IEEE Sensors Journal, vol. 21, no. 15, 2021.</li>
+                                <li>World Health Organization, "Global Solar UV Index: A Practical Guide," WHO/SDE/OEH/02.2, 2002.</li>
+                                <li>K. Thompson, M. Williams and R. Lee, "SunSafe: Personalised UV Protection App Using Fitzpatrick Skin Typing and Satellite Data," Australasian Journal of Dermatology, vol. 64, no. 2, 2023.</li>
+                                <li>H. Chen, J. Liu and W. Zhao, "Multi-Sensor Fusion for Real-Time Heat Stress Assessment in Outdoor Workers," Sensors, vol. 23, no. 8, 2023.</li>
+                            </ol>
+                        </details>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== RESEARCH GAP ====== -->
+        <section id="research_gap" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">What's Missing</span>
+                    <h2 class="title">Research <span class="hl">Gaps</span></h2>
+                    <p class="lede">Key limitations identified across existing tourism technology and AI-driven travel platforms</p>
+                </div>
+
+                <div class="gap-grid">
+                    <div class="gap-card reveal">
+                        <div class="ico"><i class="fa-solid fa-route"></i></div>
+                        <h4>Lack of Context-Aware Multi-Modal Transport</h4>
+                        <p>Current route planners rely on static schedules and ignore the informal transit systems, fair-fare prediction and real-time crowd/weather conditions unique to Sri Lanka's transport landscape.</p>
+                    </div>
+                    <div class="gap-card reveal">
+                        <div class="ico"><i class="fa-solid fa-robot"></i></div>
+                        <h4>No Agentic RAG Chatbot for Sri Lankan Tourism</h4>
+                        <p>Existing LLM travel assistants hallucinate facts and lack grounding in local Sri Lankan knowledge. No system combines RAG retrieval with autonomous tool-use agents for booking and re-planning.</p>
+                    </div>
+                    <div class="gap-card reveal">
+                        <div class="ico"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4>Fragmented Safety Information for Tourists</h4>
+                        <p>Weather, wildlife and terrain hazards are scattered across siloed platforms. No unified real-time safety pipeline with offline fallback exists for travellers in Sri Lanka's remote regions.</p>
+                    </div>
+                    <div class="gap-card reveal">
+                        <div class="ico"><i class="fa-solid fa-sun"></i></div>
+                        <h4>Absence of Personalised UV &amp; Heat Health Guidance</h4>
+                        <p>No tourism app delivers holistic sun-exposure and heatstroke guidance personalised to skin type, altitude and activity — critical in Sri Lanka's tropical climate zones from coast to hill country.</p>
                     </div>
                 </div>
             </div>
-            <div class="custom-padding mt-15">
-                <div class="wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                    <h4><span class="num">01</span> Smart Transportation Recommendation System</h4>
-                    <p class="p-text">
-                        Traditional transport recommenders such as Google Maps [1] and Moovit [2] provide route planning using static schedules and traffic data. However, they lack contextual adaptation for developing-country transport ecosystems such as Sri Lanka's mix of trains, buses, tuk-tuks and private hires. Recent work on multi-modal transit optimization [3] introduces graph-neural-network-based routing that accounts for real-time delays and crowd density. Study [4] proposes a reinforcement-learning fare predictor for informal transport in Southeast Asia, achieving 91 % accuracy on tuk-tuk pricing but limited to Bangkok only. A tourism-specific recommender [5] integrates weather and cultural-event calendars into route scoring, yet still relies on pre-computed timetables rather than live feeds. Existing systems fail to combine real-time multi-modal data with traveller preference learning and fair-fare prediction in a single Sri Lanka-focused module.
-                    </p>
-                    <br>
-                </div>
-                <div class="mt-10 wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.8s">
-                    <br>
-                    <p class="text-small"><u>References</u></p>
-                    <br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[1] Google LLC, "Google Maps Platform — Routes API," [Online]. Available: https://developers.google.com/maps/documentation/routes.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[2] Moovit Inc., "Moovit — Smart Public Transit App," [Online]. Available: https://moovit.com.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[3] Z. Wang, Y. Li and K. Chen, "GNN-Transit: Graph Neural Network Based Multi-Modal Route Optimization," IEEE Transactions on Intelligent Transportation Systems, vol. 24, no. 8, pp. 1–12, 2023.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[4] P. Chaikaew and S. Nontapa, "Reinforcement Learning-Based Fare Prediction for Informal Transit in Southeast Asia," Proceedings of the ACM SIGSPATIAL, 2022, pp. 45–54.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[5] A. Perera, D. Jayawardena and R. Gunawardena, "Context-Aware Tourist Route Recommender with Weather and Event Integration," 2023 International Conference on Advances in Computing (ICAC), pp. 112–118.</p></a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="literature" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="custom-padding mt-15">
-                <div class="wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.4s">
-                    <h4><span class="num">02</span> RAG-Based Agentic Tour Planning Chatbot</h4>
-                    <p class="p-text">
-                        Conversational AI for tourism has evolved from rule-based chatbots [6] to large-language-model (LLM) assistants. ChatGPT-based travel planners [7] generate plausible itineraries but suffer from hallucinated facts and stale knowledge. Retrieval-Augmented Generation (RAG) [8] mitigates this by grounding LLM outputs in a curated vector knowledge base, dramatically improving factual accuracy. Agentic LLM frameworks such as LangGraph [9] and AutoGen [10] enable multi-step tool-use workflows where the model autonomously searches, books and re-plans. However, no existing system combines RAG with agentic tool-use specifically for Sri Lankan tourism — a domain that requires local cultural nuance, Sinhala/Tamil language support and integration with fragmented local booking APIs.
-                    </p>
-                    <br>
+        <!-- ====== RESEARCH PROBLEM & SOLUTION ====== -->
+        <section id="research_problem" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Problem &amp; Solution</span>
+                    <h2 class="title">The challenge &amp; our <span class="hl">answer</span></h2>
+                    <p class="lede">From problem to solution — advancing AI-powered travel intelligence for Sri Lanka</p>
                 </div>
-                <div class="mt-10 wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.8s">
-                    <br>
-                    <p class="text-small"><u>References</u></p>
-                    <br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[6] B. Abu Shawar and E. Atwell, "Chatbots: Are They Really Useful?," Journal for Language Technology and Computational Linguistics, vol. 22, no. 1, pp. 29–49, 2007.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[7] S. Mao, D. Mathew and R. Joshi, "ChatTravel: LLM-Powered Itinerary Generation — Promises and Pitfalls," ACM Conference on AI for Tourism, 2024, pp. 1–10.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[8] P. Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," Advances in Neural Information Processing Systems (NeurIPS), vol. 33, 2020.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[9] LangChain Inc., "LangGraph: Build Stateful Multi-Agent Applications," [Online]. Available: https://github.com/langchain-ai/langgraph.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[10] Q. Wu et al., "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation," arXiv preprint arXiv:2308.08155, 2023.</p></a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="literature" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="custom-padding mt-15">
-                <div class="wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                    <h4><span class="num">03</span> Smart Safety Alert System</h4>
-                    <p class="p-text">
-                        Tourist safety systems range from government travel-advisory portals [11] to crowd-sourced incident apps like Citizen [12]. Geofencing-based alert platforms [13] trigger notifications when users enter predefined risk zones, while weather-event detection models [14] use LSTM networks to forecast flash floods with 87 % recall. Wildlife-proximity warning systems using IoT sensors have been deployed in African safari parks [15] but remain absent in Sri Lankan reserves such as Yala and Wilpattu, where elephant-human encounters are frequent. Current solutions are siloed: weather, wildlife and crime alerts exist on separate platforms with no unified real-time pipeline or offline fallback for low-connectivity wilderness areas.
-                    </p>
-                    <br>
-                </div>
-                <div class="mt-10 wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.8s">
-                    <br>
-                    <p class="text-small"><u>References</u></p>
-                    <br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[11] U.S. Department of State, "Travel Advisories," [Online]. Available: https://travel.state.gov/content/travel/en/traveladvisories.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[12] Citizen App Inc., "Citizen — Connect and Stay Safe," [Online]. Available: https://citizen.com.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[13] M. Al-Turjman, "Geofencing-Based Safety Alert Framework for Smart Tourism," IEEE Internet of Things Journal, vol. 10, no. 4, 2023.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[14] R. Fernando and K. Silva, "LSTM-Based Flash Flood Prediction for Tropical River Basins," 2022 International Conference on Data Science (ICDS), pp. 201–207.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[15] J. Kamau, T. Otieno and L. Mwangi, "IoT-Enabled Wildlife Proximity Warning System for Safari Parks," Sensors, vol. 22, no. 12, 2022.</p></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="literature" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="custom-padding mt-15">
-                <div class="wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                    <h4><span class="num">04</span> Smart High-UV Health Care System</h4>
-                    <p class="p-text">
-                        UV exposure monitoring has been explored through wearable sensors [16] and smartphone-based UV index estimators [17]. The WHO Global Solar UV Index [18] provides standardised daily readings but lacks personalised guidance based on skin type, altitude and activity duration. A dermatology-focused app [19] uses the Fitzpatrick scale and satellite UV data to recommend sunscreen SPF levels, achieving 94 % user satisfaction in Australian trials. However, it does not integrate hydration tracking or heatstroke risk assessment, which are critical in tropical climates. Study [20] introduces a multi-sensor fusion approach combining UV, temperature and humidity for real-time heat-stress alerts in outdoor workers but has not been adapted for tourism contexts. No existing system delivers holistic UV-plus-heat health guidance personalised to travellers in Sri Lanka's diverse climate zones — from humid coastal beaches to cool hill-country elevations.
-                    </p>
-                    <br>
-                </div>
-                <div class="mt-10 wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.8s">
-                    <br>
-                    <p class="text-small"><u>References</u></p>
-                    <br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[16] L. Gao, Y. Zhang and H. Kim, "Wearable UV Dosimeters: A Systematic Review," Photochemistry and Photobiology, vol. 98, no. 3, pp. 512–525, 2022.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[17] D. Banerjee and P. Agrawal, "Smartphone-Based Real-Time UV Index Estimation Using Camera Sensors," IEEE Sensors Journal, vol. 21, no. 15, 2021.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[18] World Health Organization, "Global Solar UV Index: A Practical Guide," WHO/SDE/OEH/02.2, 2002.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[19] K. Thompson, M. Williams and R. Lee, "SunSafe: Personalised UV Protection App Using Fitzpatrick Skin Typing and Satellite Data," Australasian Journal of Dermatology, vol. 64, no. 2, 2023.</p></a>
-                    <br><br>
-                    <a class="ref-links" href="#" target="_blank"><p class="text-small">[20] H. Chen, J. Liu and W. Zhao, "Multi-Sensor Fusion for Real-Time Heat Stress Assessment in Outdoor Workers," Sensors, vol. 23, no. 8, 2023.</p></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--====== LITERATURE SURVEY PART ENDS ======-->
-
-
-    <!--====== RESEARCH GAP PART START ======-->
-
-    <section id="research_gap" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Research Gaps</h3>
-                        <p class="text">Key limitations identified across existing tourism technology and AI-driven travel platforms</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6 single-services-col">
-                    <div class="single-services services-color-1 text-center mt-30 wow fadeInUpBig"
-                        data-wow-duration="1.3s" data-wow-delay="0.2s">
-                        <div class="services-icon d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-route"></i>
-                        </div>
-                        <div class="services-content">
-                            <h4 class="services-title"><a href="#" style="font-weight:bold;">Lack of Context-Aware Multi-Modal Transport</a></h4>
-                            <p class="text">Current route planners rely on static schedules and ignore the informal transit systems, fair-fare prediction and real-time crowd/weather conditions unique to Sri Lanka's transport landscape.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 single-services-col">
-                    <div class="single-services services-color-2 text-center mt-30 wow fadeInUpBig"
-                        data-wow-duration="1.3s" data-wow-delay="0.4s">
-                        <div class="services-icon d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <div class="services-content">
-                            <h4 class="services-title"><a href="#" style="font-weight:bold;">No Agentic RAG Chatbot for Sri Lankan Tourism</a></h4>
-                            <p class="text">Existing LLM travel assistants hallucinate facts and lack grounding in local Sri Lankan knowledge. No system combines RAG retrieval with autonomous tool-use agents for booking and re-planning.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 single-services-col">
-                    <div class="single-services services-color-3 text-center mt-30 wow fadeInUpBig"
-                        data-wow-duration="1.3s" data-wow-delay="0.6s">
-                        <div class="services-icon d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <div class="services-content">
-                            <h4 class="services-title"><a href="#" style="font-weight:bold;">Fragmented Safety Information for Tourists</a></h4>
-                            <p class="text">Weather, wildlife and terrain hazards are scattered across siloed platforms. No unified real-time safety pipeline with offline fallback exists for travellers in Sri Lanka's remote regions.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 single-services-col">
-                    <div class="single-services services-color-4 text-center mt-30 wow fadeInUpBig"
-                        data-wow-duration="1.3s" data-wow-delay="0.8s">
-                        <div class="services-icon d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-sun"></i>
-                        </div>
-                        <div class="services-content">
-                            <h4 class="services-title"><a href="#" style="font-weight:bold;">Absence of Personalised UV &amp; Heat Health Guidance</a></h4>
-                            <p class="text">No tourism app delivers holistic sun-exposure and heatstroke guidance personalised to skin type, altitude and activity — critical in Sri Lanka's tropical climate zones from coast to hill country.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--====== RESEARCH GAP PART ENDS ======-->
-
-
-    <!--====== RESEARCH PROBLEM & SOLUTION ======-->
-
-    <section id="research_problem" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Research Problem &amp; Solution</h3>
-                        <p class="text">From Problem to Solution: Advancing AI-Powered Travel Intelligence for Sri Lanka</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-15 justify-content-center">
-                <div class="col-lg-10 wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.2s">
-                    <div class="problem-card">
-                        <h5><span class="badge-ico prob"><i class="fa-solid fa-circle-question"></i></span> Problem</h5>
-                        <br>
-                        <p class="p-text">
+                <div class="prob-grid">
+                    <div class="prob-card reveal reveal-l">
+                        <div class="badge"><i class="fa-solid fa-circle-question"></i> Problem</div>
+                        <p>
                             How can an AI-powered mobile platform be developed to provide unified, context-aware travel intelligence for tourists visiting Sri Lanka — specifically addressing smart multi-modal transportation recommendations, agentic RAG-based trip planning, real-time safety alerts across diverse terrains, and personalised UV/heat health guidance — when current solutions offer fragmented information, hallucinated recommendations and no real-time awareness of local transport, safety or environmental hazards?
                         </p>
-                        <br>
                     </div>
-                </div>
-            </div>
 
-            <div class="custom-padding mt-15">
-                <div class="wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                    <h5><span class="badge-ico sol"><i class="fa-solid fa-lightbulb"></i></span> Proposed Solution</h5>
-                    <br>
-                    <p class="p-text">
-                        To address the identified gaps, the proposed solution is Travion — a unified AI-powered mobile platform that integrates four intelligent modules into a single Sri Lanka-focused travel companion. It employs a smart transportation recommendation engine that fuses real-time transit feeds, traffic, weather and user preferences to optimise multi-modal routes with fair-fare prediction for tuk-tuks, buses and trains.
-                    </p>
-                    <br>
-                    <p class="p-text">
-                        A RAG-based agentic chatbot, grounded in a curated vector knowledge base of Sri Lankan destinations, autonomously plans multi-day itineraries through natural conversation. The smart safety alert module unifies weather, wildlife and community-sourced hazard data into a real-time geofenced notification pipeline with offline support. Finally, the UV health care system personalises sun-exposure guidance, hydration reminders and heatstroke warnings using satellite UV indices, altitude data and the traveller's skin profile.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--====== RESEARCH PROBLEM ENDS ======-->
-
-
-    <!--====== RESEARCH OBJECTIVES ======-->
-
-    <section id="research_objectives" class="about-area pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Research Objectives</h3>
-                        <p class="text">Four targeted objectives powering every Travion feature</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.5s">
-
-                <div class="row align-items-center how-it-works d-flex">
-                    <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-                        <div class="circle font-weight-bold">1</div>
-                    </div>
-                    <div class="col-8">
-                        <br>
-                        <h5>Smart multi-modal transportation recommendations for Sri Lankan travel</h5>
-                        <br>
-                        <p>This objective aims to develop a context-aware transport recommendation engine that fuses real-time transit data, traffic conditions, weather and traveller preferences to suggest optimal multi-modal routes across Sri Lanka. The system predicts fair tuk-tuk fares, train availability and intercity bus schedules, continuously re-planning when conditions change.</p>
-                        <br>
-                    </div>
-                </div>
-
-                <div class="row timeline">
-                    <div class="col-2"><div class="corner top-right"></div></div>
-                    <div class="col-8"><hr /></div>
-                    <div class="col-2"><div class="corner left-bottom"></div></div>
-                </div>
-
-                <div class="row align-items-center justify-content-end how-it-works d-flex">
-                    <div class="col-8 text-right">
-                        <br>
-                        <h5>RAG-based agentic chatbot for autonomous tour planning</h5>
-                        <br>
-                        <p>This objective focuses on building a conversational AI agent backed by a curated Sri Lankan travel knowledge base using Retrieval-Augmented Generation. The chatbot autonomously plans multi-day itineraries, books activities, answers cultural queries and iteratively refines plans as the traveller's interests evolve — all through natural dialogue.</p>
-                        <br>
-                    </div>
-                    <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-                        <div class="circle font-weight-bold">2</div>
-                    </div>
-                </div>
-
-                <div class="row timeline">
-                    <div class="col-2"><div class="corner right-bottom"></div></div>
-                    <div class="col-8"><hr /></div>
-                    <div class="col-2"><div class="corner top-left"></div></div>
-                </div>
-
-                <div class="row align-items-center how-it-works d-flex">
-                    <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-                        <div class="circle font-weight-bold">3</div>
-                    </div>
-                    <div class="col-8">
-                        <br>
-                        <h5>Real-time smart safety alert system for diverse terrains</h5>
-                        <br>
-                        <p>This objective targets developing a unified safety pipeline that combines geofenced risk zones, live weather warnings, wildlife proximity alerts and community-sourced incident reports. One-tap SOS, offline hazard maps and trusted-contact live sharing keep travellers informed even in remote Sri Lankan terrain with low connectivity.</p>
-                        <br>
-                    </div>
-                </div>
-
-                <div class="row timeline">
-                    <div class="col-2"><div class="corner top-right"></div></div>
-                    <div class="col-8"><hr /></div>
-                    <div class="col-2"><div class="corner left-bottom"></div></div>
-                </div>
-
-                <div class="row align-items-center justify-content-end how-it-works d-flex">
-                    <div class="col-8 text-right">
-                        <br>
-                        <h5>Personalised UV and heat health care for tropical travel</h5>
-                        <br>
-                        <p>This objective aims to deliver personalised sun-exposure coaching using satellite UV indices, altitude, humidity and the traveller's skin profile. The system sends hydration nudges, sunscreen reminders and heatstroke warnings so visitors stay healthy under the tropical sun — from Mirissa's coast to Adam's Peak.</p>
-                        <br>
-                    </div>
-                    <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-                        <div class="circle font-weight-bold">4</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--====== RESEARCH OBJECTIVES ENDS ======-->
-
-
-    <!--====== METHODOLOGY ======-->
-
-    <section id="research_Method" class="services-area pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Methodology</h3>
-                        <p class="text">Unveiling the Evidence: Exploring Our Research Methodology for AI-Powered Travel Intelligence</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row align-items-center mt-25">
-                <!-- Phone mockup -->
-                <div class="col-lg-5 text-center wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.2s">
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="screen-header">
-                                <div class="greet">Ayubowan 👋</div>
-                                <div class="user">Plan your Sri Lanka trip</div>
-                            </div>
-                            <div class="screen-body">
-                                <div class="mock-card">
-                                    <div class="mc-ico"><i class="fa-solid fa-train"></i></div>
-                                    <div class="mc-tx">Train to Ella<span>Dep 08:30 · LKR 500</span></div>
-                                </div>
-                                <div class="mock-card">
-                                    <div class="mc-ico b"><i class="fa-solid fa-robot"></i></div>
-                                    <div class="mc-tx">AI Itinerary Ready<span>5-day cultural triangle</span></div>
-                                </div>
-                                <div class="mock-card">
-                                    <div class="mc-ico r"><i class="fa-solid fa-shield-halved"></i></div>
-                                    <div class="mc-tx">Safety OK<span>No alerts near Kandy</span></div>
-                                </div>
-                                <div class="mock-card">
-                                    <div class="mc-ico y"><i class="fa-solid fa-sun"></i></div>
-                                    <div class="mc-tx">UV Index 8<span>Apply SPF 50+</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text -->
-                <div class="col-lg-7 wow fadeInRightBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                    <div class="mt-25">
-                        <p class="p-text">
-                            The methodology involves developing an AI-driven mobile platform called "Travion," which uses multi-modal AI technologies to plan, guide and protect tourists exploring Sri Lanka. A Flutter front-end communicates with a FastAPI back-end that orchestrates LLM agents, vector databases of Sri Lankan points of interest, real-time transit and weather APIs, and on-device sensors for location and UV estimation. All modules share a common data layer cached for offline use in low-signal zones.
+                    <div class="prob-card solution reveal reveal-r">
+                        <div class="badge"><i class="fa-solid fa-lightbulb"></i> Proposed Solution</div>
+                        <p>
+                            Travion is a unified AI-powered mobile platform integrating four intelligent modules into a single Sri Lanka-focused travel companion. It fuses real-time transit, traffic, weather and user preferences to optimise multi-modal routes with fair-fare prediction for tuk-tuks, buses and trains.
                         </p>
-                        <br>
+                        <p>
+                            A RAG-based agentic chatbot grounded in a curated vector knowledge base of Sri Lankan destinations autonomously plans multi-day itineraries. A smart safety module unifies weather, wildlife and community-sourced hazards with offline support, while the UV health system personalises sun-exposure and heatstroke guidance using satellite data, altitude and skin profile.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== OBJECTIVES ====== -->
+        <section id="research_objectives" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Our Goals</span>
+                    <h2 class="title">Research <span class="hl">Objectives</span></h2>
+                    <p class="lede">Four targeted objectives powering every Travion feature</p>
+                </div>
+
+                <div class="obj-list">
+                    <div class="obj-row reveal">
+                        <div class="obj-num"><span>01</span></div>
+                        <div class="obj-copy">
+                            <h4>Smart multi-modal transportation recommendations</h4>
+                            <p>A context-aware engine fuses real-time transit data, traffic, weather and traveller preferences to suggest optimal multi-modal routes across Sri Lanka. The system predicts fair tuk-tuk fares, train availability and intercity bus schedules, continuously re-planning when conditions change.</p>
+                        </div>
                     </div>
 
-                    <div class="mt-20 wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.4s">
-                        <p class="p-text">For each component, the system employs specialised AI modules:</p>
-                        <br>
-                        <ul>
-                            <li>
-                                <p class="p-text-bold mb-2">(1) Smart Transport uses graph-based route optimisation over live transit feeds, reinforcement-learning fare prediction and predictive ETA models for multi-modal routing.</p>
-                            </li>
-                            <br>
-                            <li>
-                                <p class="p-text-bold mb-2">(2) The RAG Chatbot leverages LLM agents with a Pinecone vector DB, LangChain tool-use and autonomous re-planning workflows to generate and refine multi-day itineraries.</p>
-                            </li>
-                            <br>
-                            <li>
-                                <p class="p-text-bold mb-2">(3) Safety Alerts combine geofencing, weather APIs, wildlife proximity detection and community-sourced incident reports via a real-time event streaming pipeline with offline fallback.</p>
-                            </li>
-                            <br>
-                            <li>
-                                <p class="p-text-bold mb-2">(4) The UV Health module fuses satellite UV indices with altitude, humidity and Fitzpatrick skin-type profiles to generate personalised sun-exposure plans and heatstroke warnings.</p>
-                            </li>
+                    <div class="obj-row reveal">
+                        <div class="obj-num"><span>02</span></div>
+                        <div class="obj-copy">
+                            <h4>RAG-based agentic chatbot for autonomous tour planning</h4>
+                            <p>A conversational AI agent backed by a curated Sri Lankan travel knowledge base using Retrieval-Augmented Generation. It autonomously plans multi-day itineraries, books activities, answers cultural queries and iteratively refines plans as the traveller's interests evolve — all through natural dialogue.</p>
+                        </div>
+                    </div>
+
+                    <div class="obj-row reveal">
+                        <div class="obj-num"><span>03</span></div>
+                        <div class="obj-copy">
+                            <h4>Real-time smart safety alert system for diverse terrains</h4>
+                            <p>A unified safety pipeline combining geofenced risk zones, live weather warnings, wildlife proximity alerts and community-sourced incident reports. One-tap SOS, offline hazard maps and trusted-contact live sharing keep travellers informed even in remote terrain with low connectivity.</p>
+                        </div>
+                    </div>
+
+                    <div class="obj-row reveal">
+                        <div class="obj-num"><span>04</span></div>
+                        <div class="obj-copy">
+                            <h4>Personalised UV and heat health care for tropical travel</h4>
+                            <p>Personalised sun-exposure coaching using satellite UV indices, altitude, humidity and the traveller's skin profile. The system sends hydration nudges, sunscreen reminders and heatstroke warnings so visitors stay healthy under the tropical sun — from Mirissa's coast to Adam's Peak.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== METHODOLOGY ====== -->
+        <section id="research_method" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">How We Build It</span>
+                    <h2 class="title">Our <span class="hl">Methodology</span></h2>
+                    <p class="lede">Exploring our research methodology for AI-powered travel intelligence</p>
+                </div>
+
+                <div class="method-grid">
+                    <div class="reveal reveal-l">
+                        <div class="phone">
+                            <div class="phone-screen">
+                                <div class="phone-greet">Ayubowan 👋 <small>Plan your Sri Lanka trip</small></div>
+                                <div class="mock-card"><div class="mci t"><i class="fa-solid fa-train"></i></div><div class="mt">Train to Ella<small>Dep 08:30 · LKR 500</small></div></div>
+                                <div class="mock-card"><div class="mci r"><i class="fa-solid fa-robot"></i></div><div class="mt">AI Itinerary Ready<small>5-day cultural triangle</small></div></div>
+                                <div class="mock-card"><div class="mci s"><i class="fa-solid fa-shield-halved"></i></div><div class="mt">Safety OK<small>No alerts near Kandy</small></div></div>
+                                <div class="mock-card"><div class="mci u"><i class="fa-solid fa-sun"></i></div><div class="mt">UV Index 8<small>Apply SPF 50+</small></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="method-copy reveal reveal-r">
+                        <p>
+                            The methodology involves developing an AI-driven mobile platform called "Travion" that uses multi-modal AI technologies to plan, guide and protect tourists exploring Sri Lanka. A Flutter front-end communicates with a FastAPI back-end that orchestrates LLM agents, vector databases of Sri Lankan points of interest, real-time transit and weather APIs, and on-device sensors for location and UV estimation. All modules share a common data layer cached for offline use in low-signal zones.
+                        </p>
+
+                        <ul class="method-list">
+                            <li><span class="mli-num">1</span><span class="mli-tx"><b>Smart Transport</b> uses graph-based route optimisation over live transit feeds, reinforcement-learning fare prediction and predictive ETA models for multi-modal routing.</span></li>
+                            <li><span class="mli-num">2</span><span class="mli-tx"><b>RAG Chatbot</b> leverages LLM agents with a Pinecone vector DB, LangChain tool-use and autonomous re-planning workflows to generate and refine multi-day itineraries.</span></li>
+                            <li><span class="mli-num">3</span><span class="mli-tx"><b>Safety Alerts</b> combine geofencing, weather APIs, wildlife proximity detection and community-sourced incident reports via a real-time event streaming pipeline with offline fallback.</span></li>
+                            <li><span class="mli-num">4</span><span class="mli-tx"><b>UV Health</b> fuses satellite UV indices with altitude, humidity and Fitzpatrick skin-type profiles to generate personalised sun-exposure plans and heatstroke warnings.</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--====== METHODOLOGY ENDS ======-->
-
-
-    <!--====== TECHNOLOGIES USED ======-->
-
-    <section id="technology" class="pt-100 pb-100">
-        <div class="box">
+        <!-- ====== TECHNOLOGIES ====== -->
+        <section id="technology" class="section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="section-title text-center pb-25">
-                            <h3 class="title">Technologies Used</h3>
-                            <p class="text">A modern, scalable stack powering every Travion feature</p>
-                        </div>
-                    </div>
+                <div class="section-head reveal">
+                    <span class="eyebrow">Our Stack</span>
+                    <h2 class="title">Technologies <span class="hl">Used</span></h2>
+                    <p class="lede">A modern, scalable stack powering every Travion feature</p>
                 </div>
 
-                <div class="technology-item justify-content-center wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.5s">
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-brands fa-python tech-ico"></i></div>
-                        <div class="text mt-15"><span>Python</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-bolt tech-ico"></i></div>
-                        <div class="text mt-15"><span>FastAPI</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-brain tech-ico"></i></div>
-                        <div class="text mt-15"><span>LangChain</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-database tech-ico"></i></div>
-                        <div class="text mt-15"><span>Pinecone</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-fire tech-ico"></i></div>
-                        <div class="text mt-15"><span>Firebase</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-mobile-screen tech-ico"></i></div>
-                        <div class="text mt-15"><span>Flutter</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-map-location-dot tech-ico"></i></div>
-                        <div class="text mt-15"><span>Google Maps</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-solid fa-robot tech-ico"></i></div>
-                        <div class="text mt-15"><span>OpenAI</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-brands fa-aws tech-ico"></i></div>
-                        <div class="text mt-15"><span>AWS</span></div>
-                    </div>
-                    <div class="box-part text-center">
-                        <div class="cicular-component"><i class="fa-brands fa-docker tech-ico"></i></div>
-                        <div class="text mt-15"><span>Docker</span></div>
-                    </div>
+                <div class="tech-grid">
+                    <div class="tech reveal"><i class="fa-brands fa-python"></i><span>Python</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-bolt"></i><span>FastAPI</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-brain"></i><span>LangChain</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-database"></i><span>Pinecone</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-fire"></i><span>Firebase</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-mobile-screen"></i><span>Flutter</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-map-location-dot"></i><span>Google Maps</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-robot"></i><span>OpenAI</span></div>
+                    <div class="tech reveal"><i class="fa-brands fa-aws"></i><span>AWS</span></div>
+                    <div class="tech reveal"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--====== TECHNOLOGIES USED ENDS ======-->
-
-    <!--====== ROADMAP / MILESTONES ======-->
-    <section id="milestones" class="services-area pt-100 pb-100">
-        <div class="container bootstrap snippets bootdey">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Roadmap</h3>
-                        <p class="text">Milestones on the journey from concept to launch</p>
-                    </div>
-                </div>
-            </div>
-
-            <section id="news" class="white-bg padding-top-bottom">
-                <div class="container bootstrap snippets bootdey">
-                    <div class="timeline-milestone">
-                        <div class="date-title"><span>2025 — 2026</span></div>
-
-                        <div class="row">
-                            <div class="col-sm-6 news-item wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                                <div class="news-content">
-                                    <div class="date"><small>July</small><br><small>2025</small></div>
-                                    <h2 class="news-title">Concept &amp; Proposal</h2>
-                                    <br>
-                                    <p>Initial concept for Travion drafted, Sri Lankan tourism domain research
-                                        completed and project proposal approved.</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 news-item right wow fadeInRightBig" data-wow-duration="1.3s" data-wow-delay="0.4s">
-                                <div class="news-content">
-                                    <div class="date"><small>Sep</small><br><small>2025</small></div>
-                                    <h2 class="news-title">Prototype &amp; Data Pipelines</h2>
-                                    <br>
-                                    <p>Core architecture built, RAG knowledge base seeded and live transit / weather
-                                        integrations delivered for MVP.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6 news-item wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.5s">
-                                <div class="news-content">
-                                    <div class="date"><small>Dec</small><br><small>2025</small></div>
-                                    <h2 class="news-title">Progress Review I</h2>
-                                    <br>
-                                    <p>50% completion milestone: transportation module + chatbot working end-to-end,
-                                        demo'd to supervisors and review panel.</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 news-item right wow fadeInRightBig" data-wow-duration="1.3s" data-wow-delay="0.6s">
-                                <div class="news-content">
-                                    <div class="date"><small>Feb</small><br><small>2026</small></div>
-                                    <h2 class="news-title">Safety &amp; UV Integration</h2>
-                                    <br>
-                                    <p>Smart safety alert network and UV health system integrated with on-device
-                                        notifications and offline support for low-signal regions.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6 news-item wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.7s">
-                                <div class="news-content">
-                                    <div class="date"><small>Mar</small><br><small>2026</small></div>
-                                    <h2 class="news-title">Research Paper &amp; Progress II</h2>
-                                    <br>
-                                    <p>Research paper submitted, 90% completion demonstrated alongside the project
-                                        poster presentation.</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 news-item right wow fadeInRightBig" data-wow-duration="1.3s" data-wow-delay="0.8s">
-                                <div class="news-content">
-                                    <div class="date"><small>Apr</small><br><small>2026</small></div>
-                                    <h2 class="news-title">Beta Launch</h2>
-                                    <br>
-                                    <p>Closed beta of Travion rolled out to selected Sri Lankan tourists and feedback
-                                        collected for final tuning of models and UX.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6 news-item wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.9s">
-                                <div class="news-content">
-                                    <div class="date"><small>May</small><br><small>2026</small></div>
-                                    <h2 class="news-title">Final Presentation &amp; VIVA</h2>
-                                    <br>
-                                    <p>Project defended individually and as a team; final documentation and viva
-                                        completed with full feature demonstration.</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 news-item right wow fadeInRightBig" data-wow-duration="1.3s" data-wow-delay="1s">
-                                <div class="news-content">
-                                    <div class="date"><small>Jun</small><br><small>2026</small></div>
-                                    <h2 class="news-title">Public Launch</h2>
-                                    <br>
-                                    <p>Travion goes live on Play Store and App Store — empowering travellers from
-                                        Colombo to Trincomalee with smart AI tour planning.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <!--====== DOCUMENTS ======-->
-    <section id="document" class="about-area pt-100 pb-100">
-        <div class="box">
+        <!-- ====== MILESTONES / ROADMAP ====== -->
+        <section id="milestones" class="section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center pb-25">
-                            <h3 class="title">Documents</h3>
-                            <p class="text">Key project deliverables and research artefacts</p>
+                <div class="section-head reveal">
+                    <span class="eyebrow">Journey Timeline</span>
+                    <h2 class="title">Our <span class="hl">Roadmap</span></h2>
+                    <p class="lede">Milestones on the journey from concept to launch · 2025 — 2026</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> July 2025</div>
+                            <h4>Concept &amp; Proposal</h4>
+                            <p>Initial concept for Travion drafted, Sri Lankan tourism domain research completed and project proposal approved.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Sep 2025</div>
+                            <h4>Prototype &amp; Data Pipelines</h4>
+                            <p>Core architecture built, RAG knowledge base seeded and live transit / weather integrations delivered for MVP.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Dec 2025</div>
+                            <h4>Progress Review I</h4>
+                            <p>50% completion milestone: transportation module + chatbot working end-to-end, demo'd to supervisors and review panel.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Feb 2026</div>
+                            <h4>Safety &amp; UV Integration</h4>
+                            <p>Smart safety alert network and UV health system integrated with on-device notifications and offline support for low-signal regions.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Mar 2026</div>
+                            <h4>Research Paper &amp; Progress II</h4>
+                            <p>Research paper submitted, 90% completion demonstrated alongside the project poster presentation.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Apr 2026</div>
+                            <h4>Beta Launch</h4>
+                            <p>Closed beta of Travion rolled out to selected Sri Lankan tourists and feedback collected for final tuning of models and UX.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> May 2026</div>
+                            <h4>Final Presentation &amp; VIVA</h4>
+                            <p>Project defended individually and as a team; final documentation and viva completed with full feature demonstration.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Jun 2026</div>
+                            <h4>Public Launch</h4>
+                            <p>Travion goes live on Play Store and App Store — empowering travellers from Colombo to Trincomalee with smart AI tour planning.</p>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.6s">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-file-lines"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Project Proposal</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-file-pdf"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Research Paper</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-book"></i></div>
-                                        <p class="logo">Individual</p>
-                                        <div class="h6">Final Reports</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-clipboard-check"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Checklists</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-book-open"></i></div>
-                                        <p class="logo">Individual</p>
-                                        <div class="h6">Log Books</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-image"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Flyer</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--====== PRESENTATIONS ======-->
-    <section id="presentation" class="pt-100 pb-100">
-        <div class="box">
+        <!-- ====== DOCUMENTS ====== -->
+        <section id="document" class="section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center pb-25">
-                            <h3 class="title">Presentations</h3>
-                            <p class="text">Slide decks from each major milestone</p>
-                        </div>
-                    </div>
+                <div class="section-head reveal">
+                    <span class="eyebrow">Deliverables</span>
+                    <h2 class="title">Project <span class="hl">Documents</span></h2>
+                    <p class="lede">Key project deliverables and research artefacts</p>
                 </div>
-                <div class="row justify-content-center wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.6s">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container-presentation">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-chalkboard"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Project Proposal</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container-presentation">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-chalkboard-user"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Progress Presentation I</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container-presentation">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-chalkboard-user"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Progress Presentation II</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-30">
-                        <section class="doc-container-presentation">
-                            <a href="#" target="_blank">
-                                <div class="doc-card">
-                                    <div class="doc-content">
-                                        <div class="doc-ico-big"><i class="fa-solid fa-trophy"></i></div>
-                                        <p class="logo">Group</p>
-                                        <div class="h6">Final Presentation</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!--====== DEMO VIDEO ======-->
-    <section class="parallax-bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pb-25">
-                        <h3 class="title">Demonstration Video</h3>
-                        <p class="text" style="color:rgba(255,255,255,0.75);">See Travion in action across Sri Lanka's
-                            most iconic destinations</p>
-                    </div>
+                <div class="doc-grid">
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-file-lines"></i></div><span class="doc-tag">Group</span><div class="doc-t">Project Proposal</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-file-pdf"></i></div><span class="doc-tag">Group</span><div class="doc-t">Research Paper</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-book"></i></div><span class="doc-tag">Individual</span><div class="doc-t">Final Reports</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-clipboard-check"></i></div><span class="doc-tag">Group</span><div class="doc-t">Checklists</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-book-open"></i></div><span class="doc-tag">Individual</span><div class="doc-t">Log Books</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-image"></i></div><span class="doc-tag">Group</span><div class="doc-t">Flyer</div></a>
                 </div>
             </div>
-            <div class="text-center">
-                <iframe width="800" height="475"
-                    src="https://www.youtube.com/embed/pVj2sbDhA6w"
-                    title="Travion Demo Video"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!--====== TEAM ======-->
-    <section id="team" class="about-area pt-100 pb-100">
-        <div class="box">
+        <!-- ====== PRESENTATIONS ====== -->
+        <section id="presentation" class="section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center pb-25">
-                            <h3 class="title">About Us</h3>
-                            <p class="text">Meet the team behind Travion — your partners in smart Sri Lankan travel</p>
-                        </div>
-                    </div>
+                <div class="section-head reveal">
+                    <span class="eyebrow">Slide Decks</span>
+                    <h2 class="title">Our <span class="hl">Presentations</span></h2>
+                    <p class="lede">Slide decks from each major milestone</p>
                 </div>
 
-                <div class="responsive-container-block container-team">
-                    <div class="responsive-container-block">
-                        <div class="responsive-cell-block wk-desk-2 wk-ipadp-2 wk-tab-6 wk-mobile-10 card-container">
-                            <div class="card-team wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.1s">
-                                <div class="team-image-wrapper">
-                                    <img class="team-member-image" src="./assets/images/team_images/Prof_Samantha.jpg">
-                                </div>
-                                <p class="text-blk name">Prof. Samantha Thelijjagoda</p>
-                                <p class="text-blk position">Supervisor</p>
-                                <p class="text-blk feature-text">Sri Lanka Institute of Information Technology, Malabe</p>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="responsive-cell-block wk-desk-2 wk-ipadp-2 wk-tab-6 wk-mobile-10 card-container">
-                            <div class="card-team wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.15s">
-                                <div class="team-image-wrapper">
-                                    <img class="team-member-image" src="./assets/images/team_images/Ms_Jenny.jpg">
-                                </div>
-                                <p class="text-blk name">Ms. Jenny Krishara</p>
-                                <p class="text-blk position">Co-Supervisor</p>
-                                <p class="text-blk feature-text">Sri Lanka Institute of Information Technology, Malabe</p>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="responsive-cell-block wk-desk-2 wk-ipadp-2 wk-tab-6 wk-mobile-10 card-container">
-                            <div class="card-team wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.2s">
-                                <div class="team-image-wrapper">
-                                    <img class="team-member-image" src="./assets/images/team_images/Shashini.jpg">
-                                </div>
-                                <p class="text-blk name">Hanshani S. G. H. S.</p>
-                                <p class="text-blk position">Team Leader — Smart Transport</p>
-                                <p class="text-blk feature-text">Sri Lanka Institute of Information Technology</p>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="responsive-cell-block wk-desk-2 wk-ipadp-2 wk-tab-6 wk-mobile-10 card-container">
-                            <div class="card-team wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.25s">
-                                <div class="team-image-wrapper">
-                                    <img class="team-member-image" src="./assets/images/team_images/Shashin.jpg">
-                                </div>
-                                <p class="text-blk name">Kalpajith K. L. S.</p>
-                                <p class="text-blk position">Team Member — RAG Chatbot</p>
-                                <p class="text-blk feature-text">Sri Lanka Institute of Information Technology</p>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="responsive-cell-block wk-desk-2 wk-ipadp-2 wk-tab-6 wk-mobile-10 card-container">
-                            <div class="card-team wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                                <div class="team-image-wrapper">
-                                    <img class="team-member-image" src="./assets/images/team_images/Yasira.jpg">
-                                </div>
-                                <p class="text-blk name">Wimaladharma T. H. Y. B.</p>
-                                <p class="text-blk position">Team Member — Safety Alert</p>
-                                <p class="text-blk feature-text">Sri Lanka Institute of Information Technology</p>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="responsive-cell-block wk-desk-2 wk-ipadp-2 wk-tab-6 wk-mobile-10 card-container">
-                            <div class="card-team wow fadeInUpBig" data-wow-duration="1.3s" data-wow-delay="0.35s">
-                                <div class="team-image-wrapper">
-                                    <img class="team-member-image" src="./assets/images/team_images/Chalani.jpg">
-                                </div>
-                                <p class="text-blk name">Rajapaksha C. S.</p>
-                                <p class="text-blk position">Team Member — UV Health</p>
-                                <p class="text-blk feature-text">Sri Lanka Institute of Information Technology</p>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="doc-grid pres-grid">
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-chalkboard"></i></div><span class="doc-tag">Group</span><div class="doc-t">Project Proposal</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-chalkboard-user"></i></div><span class="doc-tag">Group</span><div class="doc-t">Progress Presentation I</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-chalkboard-user"></i></div><span class="doc-tag">Group</span><div class="doc-t">Progress Presentation II</div></a>
+                    <a href="#" target="_blank" class="doc reveal"><div class="doc-ic"><i class="fa-solid fa-trophy"></i></div><span class="doc-tag">Group</span><div class="doc-t">Final Presentation</div></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--====== CONTACT ======-->
-    <section id="contact" class="pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pb-70">
-                        <h3 class="title">Contact Us</h3>
-                        <p class="text">Have questions about Travion? We'd love to hear from you</p>
-                    </div>
+        <!-- ====== DEMO VIDEO ====== -->
+        <section id="demo" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Watch</span>
+                    <h2 class="title">See Travion in <span class="hl">motion</span></h2>
+                    <p class="lede">See Travion in action across Sri Lanka's most iconic destinations</p>
+                </div>
+
+                <div class="demo-wrap reveal reveal-s">
+                    <iframe src="https://www.youtube.com/"
+                        title="Travion Demo Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
                 </div>
             </div>
+        </section>
 
-            <div class="row justify-content-center">
-                <div class="col-md-6 mb-30 wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.2s">
-                    <div class="contact-ui">
-                        <h4 class="heading">Get in Touch</h4>
-                        <p>Reach out for collaborations, press, or general queries about Travion — the smart Sri Lankan
-                            travel companion.</p>
-                        <ul class="contact-info-list">
-                            <li><i class="fa-solid fa-envelope"></i>
-                                <a class="contact-email" href="mailto:travion.app@gmail.com">travion.app@gmail.com</a>
-                            </li>
-                            <li><i class="fa-solid fa-location-dot"></i> SLIIT, New Kandy Road, Malabe, Sri Lanka</li>
-                            <li><i class="fa-solid fa-phone"></i> +94 11 000 0000</li>
+        <!-- ====== TEAM ====== -->
+        <section id="team" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Meet the Team</span>
+                    <h2 class="title">The people behind <span class="hl">Travion</span></h2>
+                    <p class="lede">Your partners in smart Sri Lankan travel</p>
+                </div>
+
+                <div class="team-grid">
+                    <article class="mate reveal">
+                        <div class="mate-photo"><img src="assets/images/team_images/sup.jpg" alt="Dr. Sanvitha"></div>
+                        <div class="mate-body">
+                            <span class="role">Supervisor</span>
+                            <h4>Dr. Sanvitha</h4>
+                            <p class="affil">Sri Lanka Institute of Information Technology, Malabe</p>
+                            <div class="mate-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="mate reveal">
+                        <div class="mate-photo"><img src="assets/images/team_images/sup.jpg" alt="Dr. Kapila"></div>
+                        <div class="mate-body">
+                            <span class="role">Co-Supervisor</span>
+                            <h4>Dr. Kapila</h4>
+                            <p class="affil">Sri Lanka Institute of Information Technology, Malabe</p>
+                            <div class="mate-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="mate reveal">
+                        <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr.Weerakkody"></div>
+                        <div class="mate-body">
+                            <span class="role">Team Leader — Smart Transport</span>
+                            <h4>Dr.Weerakkody</h4>
+                            <p class="affil">Sri Lanka Institute of Information Technology</p>
+                            <div class="mate-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="mate reveal">
+                        <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr. Sadeep"></div>
+                        <div class="mate-body">
+                            <span class="role">Team Member — RAG Chatbot</span>
+                            <h4>Dr. Sadeep</h4>
+                            <p class="affil">Sri Lanka Institute of Information Technology</p>
+                            <div class="mate-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="mate reveal">
+                        <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr. jayasooriya"></div>
+                        <div class="mate-body">
+                            <span class="role">Team Member — Safety Alert</span>
+                            <h4>Dr. jayasooriya</h4>
+                            <p class="affil">Sri Lanka Institute of Information Technology</p>
+                            <div class="mate-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="mate reveal">
+                        <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr. Nirasha"></div>
+                        <div class="mate-body">
+                            <span class="role">Team Member — UV Health</span>
+                            <h4>Dr. Nirasha</h4>
+                            <p class="affil">Sri Lanka Institute of Information Technology</p>
+                            <div class="mate-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== CONTACT ====== -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Get in Touch</span>
+                    <h2 class="title">Let's <span class="hl">talk</span></h2>
+                    <p class="lede">Have questions about Travion? We'd love to hear from you.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card accent reveal reveal-l">
+                        <h4>Reach out directly</h4>
+                        <p>Reach out for collaborations, press, or general queries about Travion — the smart Sri Lankan travel companion.</p>
+                        <ul class="contact-info">
+                            <li><i class="fa-solid fa-envelope"></i><a href="mailto:travion.app@gmail.com">travion.app@gmail.com</a></li>
+                            <li><i class="fa-solid fa-location-dot"></i>SLIIT, New Kandy Road, Malabe, Sri Lanka</li>
+                            <li><i class="fa-solid fa-phone"></i>+94 11 000 0000</li>
                         </ul>
-                        <br>
-                        <p><b>— Team Travion —</b></p>
+                        <p style="color: var(--text-dim); font-size: 0.9rem;"><b>— Team Travion —</b></p>
                     </div>
-                </div>
 
-                <div class="col-md-6 wow fadeInRightBig" data-wow-duration="1.3s" data-wow-delay="0.3s">
-                    <div class="contact-ui">
-                        <h4 class="heading">Send a Message</h4>
-                        <form class="mb-0" id="emailForm">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Your name" required />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email" required />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject" required />
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" cols="30" rows="5" placeholder="Write your message" required></textarea>
-                            </div>
-                            <button class="main-btn" type="submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                    <div class="contact-card reveal reveal-r">
+                        <h4>Send a message</h4>
+                        <form class="contact-form" id="contactForm">
+                            <div class="field"><input type="text" name="name" placeholder="Your name" required></div>
+                            <div class="field"><input type="email" name="email" placeholder="Email" required></div>
+                            <div class="field"><input type="text" name="subject" placeholder="Subject" required></div>
+                            <div class="field"><textarea name="message" rows="5" placeholder="Write your message" required></textarea></div>
+                            <button type="submit" class="btn btn-primary">Send Message <i class="fa-solid fa-paper-plane arrow"></i></button>
+                            <div class="form-note" id="formNote"></div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--====== FOOTER ======-->
-    <footer class="travion-footer">
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <a class="navbar-brand" href="#home" style="color:#fff;">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a class="brand" href="#home">
                         <span class="brand-mark"><i class="fa-solid fa-compass"></i></span>
-                        <span style="background:linear-gradient(135deg,#FF7A1A,#FFC048);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Travion</span>
+                        <span>Travion</span>
                     </a>
-                    <p style="margin-top:14px;">Smart AI Tour Planner for Sri Lanka — explore, plan, travel safely.</p>
+                    <p class="f-about">Smart AI Tour Planner for Sri Lanka — explore, plan, travel safely. Your AI-powered companion across the Pearl of the Indian Ocean.</p>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4">
+                <div class="footer-col">
                     <h5>Explore</h5>
-                    <p><a href="#literature">About</a></p>
-                    <p><a href="#research_objectives">Features</a></p>
-                    <p><a href="#milestones">Roadmap</a></p>
+                    <ul>
+                        <li><a href="#literature">About</a></li>
+                        <li><a href="#research_objectives">Features</a></li>
+                        <li><a href="#milestones">Roadmap</a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4">
+                <div class="footer-col">
                     <h5>Resources</h5>
-                    <p><a href="#document">Documents</a></p>
-                    <p><a href="#presentation">Presentations</a></p>
-                    <p><a href="#team">Team</a></p>
+                    <ul>
+                        <li><a href="#document">Documents</a></li>
+                        <li><a href="#presentation">Presentations</a></li>
+                        <li><a href="#team">Team</a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-4 col-md-4 mb-4">
+                <div class="footer-col">
                     <h5>Contact</h5>
                     <p><i class="fa-solid fa-envelope"></i> travion.app@gmail.com</p>
                     <p><i class="fa-solid fa-location-dot"></i> Malabe, Sri Lanka</p>
-                    <div class="social-icons" style="justify-content:flex-start;margin-top:14px;">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                © 2026 Travion — Smart AI Tour Planner for Sri Lanka. All rights reserved.
+                <span>© 2026 Travion — Smart AI Tour Planner for Sri Lanka. All rights reserved.</span>
+                <span>Crafted with <i class="fa-solid fa-heart" style="color:#ec4899;"></i> at SLIIT</span>
             </div>
         </div>
     </footer>
 
-    <!--====== BACK TO TOP ======-->
-    <a href="#" class="back-to-top"><i class="fa-solid fa-chevron-up"></i></a>
+    <a href="#home" class="back-top" id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
 
-    <!--====== SCRIPTS ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <!-- legacy Giggle particleground disabled (replaced by Travion canvas particles) -->
-    <!-- <script src="assets/js/home_ui.js"></script> -->
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/scrolling-nav.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- ====== CORE LIBRARIES ====== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    <!--====== TRAVION HERO JS — typewriter, particles, parallax, count-up ======-->
-    <script>
-    (function () {
-      // --- 1. Navbar scroll state -------------------------------------------
-      const navbar = document.querySelector('.navbar-area');
-      const onScroll = () => {
-        if (!navbar) return;
-        if (window.scrollY > 60) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-
-      // --- 2. Typewriter rotating destinations ------------------------------
-      const typedEl = document.getElementById('typedText');
-      if (typedEl) {
-        const words = ['Ceylon', 'Sigiriya', 'Ella', 'Galle', 'Kandy', 'Mirissa', 'Yala'];
-        let wi = 0, ci = 0, deleting = false;
-        const tick = () => {
-          const word = words[wi];
-          if (!deleting) {
-            ci++;
-            typedEl.textContent = word.slice(0, ci);
-            if (ci === word.length) { deleting = true; setTimeout(tick, 1800); return; }
-          } else {
-            ci--;
-            typedEl.textContent = word.slice(0, ci);
-            if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; }
-          }
-          setTimeout(tick, deleting ? 55 : 110);
-        };
-        setTimeout(tick, 2600);
-      }
-
-      // --- 3. Count-up stats ------------------------------------------------
-      const countEls = document.querySelectorAll('.hero-stat .n[data-count]');
-      const animateCount = (el) => {
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || (target >= 25 && target < 1000 ? '+' : '');
-        const dur = 1800;
-        const start = performance.now();
-        const step = (now) => {
-          const p = Math.min((now - start) / dur, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          const val = Math.floor(eased * target);
-          el.textContent = val >= 1000 ? (val / 1000).toFixed(val >= 10000 ? 0 : 1) + 'K' + suffix : val + suffix;
-          if (p < 1) requestAnimationFrame(step);
-          else el.textContent = target >= 1000 ? (target / 1000) + 'K' + suffix : target + suffix;
-        };
-        requestAnimationFrame(step);
-      };
-      // trigger after hero load-in
-      setTimeout(() => countEls.forEach(animateCount), 1100);
-
-      // --- 4. Mouse parallax on hero scene ----------------------------------
-      const scene = document.getElementById('heroScene');
-      const visual = document.querySelector('.hero-visual');
-      if (scene) {
-        const layers = scene.querySelectorAll('[data-depth]');
-        document.querySelector('.header-area').addEventListener('mousemove', (e) => {
-          const rect = scene.getBoundingClientRect();
-          const cx = (e.clientX - rect.left) / rect.width - 0.5;
-          const cy = (e.clientY - rect.top) / rect.height - 0.5;
-          layers.forEach(l => {
-            const d = parseFloat(l.dataset.depth) || 0.5;
-            l.style.transform = `translate3d(${-cx * d * 30}px, ${-cy * d * 15}px, 0)`;
-          });
-          if (visual) {
-            visual.style.transform = `translate3d(${-cx * 18}px, ${-cy * 12}px, 0)`;
-          }
-        });
-      }
-
-      // --- 5. Canvas firefly particles --------------------------------------
-      const canvas = document.getElementById('hero-particles');
-      if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let w, h, particles = [];
-        const resize = () => {
-          w = canvas.width = canvas.offsetWidth;
-          h = canvas.height = canvas.offsetHeight;
-        };
-        const init = () => {
-          resize();
-          const count = Math.min(70, Math.floor(w / 22));
-          particles = Array.from({ length: count }, () => ({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: Math.random() * 2 + 0.6,
-            vx: (Math.random() - 0.5) * 0.25,
-            vy: (Math.random() - 0.5) * 0.25,
-            a: Math.random() * Math.PI * 2,
-            s: 0.01 + Math.random() * 0.03,
-            hue: Math.random() > 0.5 ? '255, 192, 72' : '255, 122, 26'
-          }));
-        };
-        const draw = () => {
-          ctx.clearRect(0, 0, w, h);
-          particles.forEach(p => {
-            p.x += p.vx; p.y += p.vy; p.a += p.s;
-            if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-            if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-            const alpha = 0.35 + Math.sin(p.a) * 0.35;
-            const radius = p.r * (1 + Math.sin(p.a) * 0.3);
-            const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 6);
-            grd.addColorStop(0, `rgba(${p.hue}, ${alpha})`);
-            grd.addColorStop(1, `rgba(${p.hue}, 0)`);
-            ctx.fillStyle = grd;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, radius * 6, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = `rgba(${p.hue}, ${Math.min(alpha + 0.3, 1)})`;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-            ctx.fill();
-          });
-          requestAnimationFrame(draw);
-        };
-        init();
-        draw();
-        window.addEventListener('resize', init);
-      }
-
-      // --- 6. Watch demo smooth scroll to video section ---------------------
-      const wd = document.getElementById('watchDemoBtn');
-      if (wd) {
-        wd.addEventListener('click', (e) => {
-          e.preventDefault();
-          const t = document.querySelector('.parallax-bg');
-          if (t) window.scrollTo({ top: t.offsetTop - 60, behavior: 'smooth' });
-        });
-      }
-
-      // --- 7. Ensure background video plays (mobile autoplay quirks) --------
-      const v = document.getElementById('heroVideo');
-      if (v) {
-        v.play().catch(() => {});
-        v.addEventListener('error', () => { v.style.display = 'none'; }, true);
-      }
-    })();
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof emailjs !== 'undefined') {
-          emailjs.init("QzkS_tc0wIwgKee9L");
-          const form = document.getElementById("emailForm");
-          if (form) {
-            form.addEventListener("submit", function (e) {
-              e.preventDefault();
-              emailjs.sendForm("service_zdehj5m", "template_fkwp028", form)
-                .then(() => {
-                  alert("Your message has been sent successfully. Thank you!");
-                  form.reset();
-                })
-                .catch(() => {
-                  alert("Your message has been sent successfully. Thank you!");
-                  form.reset();
-                });
-            });
-          }
-        }
-      });
-    </script>
+    <!-- App -->
+    <script src="assets/js/app.js"></script>
 </body>
+
 </html>
