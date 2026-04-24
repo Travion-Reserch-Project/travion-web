@@ -363,7 +363,7 @@
                     <article class="lit-card reveal">
                         <div class="lit-head">
                             <div class="lit-num">03</div>
-                            <h3 class="lit-title">Smart Safety Alert System</h3>
+                            <h3 class="lit-title">AI-Driven Safety Risk Prediction Systems</h3>
                         </div>
                         <p class="lit-body">
                             Tourist safety systems range from government travel-advisory portals [11] to crowd-sourced incident apps like Citizen [12]. Geofencing-based alert platforms [13] trigger notifications when users enter predefined risk zones, while weather-event detection models [14] use LSTM networks to forecast flash floods with 87 % recall. Wildlife-proximity warning systems using IoT sensors have been deployed in African safari parks [15] but remain absent in Sri Lankan reserves such as Yala and Wilpattu, where elephant-human encounters are frequent. Current solutions are siloed: weather, wildlife and crime alerts exist on separate platforms with no unified real-time pipeline or offline fallback for low-connectivity wilderness areas.
@@ -425,8 +425,8 @@
                     </div>
                     <div class="gap-card reveal">
                         <div class="ico"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h4>Fragmented Safety Information for Tourists</h4>
-                        <p>Weather, wildlife and terrain hazards are scattered across siloed platforms. No unified real-time safety pipeline with offline fallback exists for travellers in Sri Lanka's remote regions.</p>
+                        <h4>Weak Predictive Tourist Safety Support</h4>
+                        <p>Most safety tools provide only reactive alerts. Predictive crime risk analysis with real-time mobile notifications for tourists is still limited.</p>
                     </div>
                     <div class="gap-card reveal">
                         <div class="ico"><i class="fa-solid fa-sun"></i></div>
@@ -450,7 +450,7 @@
                     <div class="prob-card reveal reveal-l">
                         <div class="badge"><i class="fa-solid fa-circle-question"></i> Problem</div>
                         <p>
-                            How can an AI-powered mobile platform be developed to provide unified, context-aware travel intelligence for tourists visiting Sri Lanka — specifically addressing smart multi-modal transportation recommendations, agentic RAG-based trip planning, real-time safety alerts across diverse terrains, and personalised UV/heat health guidance — when current solutions offer fragmented information, hallucinated recommendations and no real-time awareness of local transport, safety or environmental hazards?
+                            How can an AI-powered mobile platform be developed to provide unified, context-aware travel intelligence for tourists visiting Sri Lanka — specifically addressing smart multi-modal transportation recommendations, agentic RAG-based trip planning, tourist safety risk prediction & real-time safety incident alerts, and personalised UV/heat health guidance when current solutions offer fragmented information, hallucinated recommendations and no real-time awareness of local transport and tourist safety risks?
                         </p>
                     </div>
 
@@ -460,7 +460,7 @@
                             Travion is a unified AI-powered mobile platform integrating four intelligent modules into a single Sri Lanka-focused travel companion. It fuses real-time transit, traffic, weather and user preferences to optimise multi-modal routes with fair-fare prediction for tuk-tuks, buses and trains.
                         </p>
                         <p>
-                            A RAG-based agentic chatbot grounded in a curated vector knowledge base of Sri Lankan destinations autonomously plans multi-day itineraries. A smart safety module unifies weather, wildlife and community-sourced hazards with offline support, while the UV health system personalises sun-exposure and heatstroke guidance using satellite data, altitude and skin profile.
+                            A RAG-based agentic chatbot grounded in a curated vector knowledge base of Sri Lankan destinations autonomously plans multi-day itineraries. A smart safety module uses AI-driven risk prediction based on historical crime data, crowdsourced incident reports, and geospatial context to generate real-time alerts, live risk heatmaps, and nearby police assistance recommendations for tourists, while the UV health system personalises sun-exposure and heatstroke guidance using satellite data, altitude and skin profile.
                         </p>
                     </div>
                 </div>
@@ -496,16 +496,16 @@
                     <div class="obj-row reveal">
                         <div class="obj-num"><span>03</span></div>
                         <div class="obj-copy">
-                            <h4>Real-time smart safety alert system for diverse terrains</h4>
-                            <p>A unified safety pipeline combining geofenced risk zones, live weather warnings, wildlife proximity alerts and community-sourced incident reports. One-tap SOS, offline hazard maps and trusted-contact live sharing keep travellers informed even in remote terrain with low connectivity.</p>
+                            <h4>AI-Driven Safety Risk Prediction and Real-Time Alerts</h4>
+                            <p>Develop a smart safety module that uses historical crime data, crowdsourced incident reports, and geospatial context to predict tourist safety risks, generate real-time alerts, visualize danger zones through live heatmaps, and recommend nearby police assistance.</p>
                         </div>
                     </div>
 
                     <div class="obj-row reveal">
                         <div class="obj-num"><span>04</span></div>
                         <div class="obj-copy">
-                            <h4>Personalised UV and heat health care for tropical travel</h4>
-                            <p>Personalised sun-exposure coaching using satellite UV indices, altitude, humidity and the traveller's skin profile. The system sends hydration nudges, sunscreen reminders and heatstroke warnings so visitors stay healthy under the tropical sun — from Mirissa's coast to Adam's Peak.</p>
+                            <h4>Personalized UV and heat health care for tropical travel</h4>
+                            <p>Personalized sun-exposure coaching using satellite UV indices, altitude, humidity and the traveller's skin profile. The system sends hydration nudges, sunscreen reminders and heatstroke warnings so visitors stay healthy under the tropical sun — from Mirissa's coast to Adam's Peak.</p>
                         </div>
                     </div>
                 </div>
@@ -542,7 +542,7 @@
                         <ul class="method-list">
                             <li><span class="mli-num">1</span><span class="mli-tx"><b>Smart Transport</b> uses graph-based route optimisation over live transit feeds, reinforcement-learning fare prediction and predictive ETA models for multi-modal routing.</span></li>
                             <li><span class="mli-num">2</span><span class="mli-tx"><b>RAG Chatbot</b> leverages LLM agents with a Pinecone vector DB, LangChain tool-use and autonomous re-planning workflows to generate and refine multi-day itineraries.</span></li>
-                            <li><span class="mli-num">3</span><span class="mli-tx"><b>Safety Alerts</b> combine geofencing, weather APIs, wildlife proximity detection and community-sourced incident reports via a real-time event streaming pipeline with offline fallback.</span></li>
+                            <li><span class="mli-num">3</span><span class="mli-tx"><b>Safety Risk Prediction Module</b> uses historical crime records, crowdsourced reports, GPS location data, and machine learning models to predict risks, trigger alerts, and recommend nearby police stations.</span></li>
                             <li><span class="mli-num">4</span><span class="mli-tx"><b>UV Health</b> fuses satellite UV indices with altitude, humidity and Fitzpatrick skin-type profiles to generate personalised sun-exposure plans and heatstroke warnings.</span></li>
                         </ul>
                     </div>
@@ -565,9 +565,9 @@
                     <div class="tech reveal"><i class="fa-solid fa-brain"></i><span>LangChain</span></div>
                     <div class="tech reveal"><i class="fa-solid fa-database"></i><span>Pinecone</span></div>
                     <div class="tech reveal"><i class="fa-solid fa-fire"></i><span>Firebase</span></div>
-                    <div class="tech reveal"><i class="fa-solid fa-mobile-screen"></i><span>Flutter</span></div>
-                    <div class="tech reveal"><i class="fa-solid fa-map-location-dot"></i><span>Google Maps</span></div>
-                    <div class="tech reveal"><i class="fa-solid fa-robot"></i><span>OpenAI</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-mobile-screen"></i><span>React Native</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-map-location-dot"></i><span>Google Maps API</span></div>
+                    <div class="tech reveal"><i class="fa-solid fa-robot"></i><span>OpenAI API</span></div>
                     <div class="tech reveal"><i class="fa-brands fa-aws"></i><span>AWS</span></div>
                     <div class="tech reveal"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
                 </div>
@@ -587,8 +587,8 @@
                     <div class="tl-item reveal">
                         <div class="tl-dot"></div>
                         <div class="tl-card">
-                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> July 2025</div>
-                            <h4>Concept &amp; Proposal</h4>
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Oct 2025</div>
+                            <h4>Project Proposal</h4>
                             <p>Initial concept for Travion drafted, Sri Lankan tourism domain research completed and project proposal approved.</p>
                         </div>
                     </div>
@@ -605,8 +605,8 @@
                     <div class="tl-item reveal">
                         <div class="tl-dot"></div>
                         <div class="tl-card">
-                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Dec 2025</div>
-                            <h4>Progress Review I</h4>
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Jan 2025</div>
+                            <h4>Progress Presentation I</h4>
                             <p>50% completion milestone: transportation module + chatbot working end-to-end, demo'd to supervisors and review panel.</p>
                         </div>
                     </div>
@@ -614,9 +614,9 @@
                     <div class="tl-item reveal">
                         <div class="tl-dot"></div>
                         <div class="tl-card">
-                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Feb 2026</div>
-                            <h4>Safety &amp; UV Integration</h4>
-                            <p>Smart safety alert network and UV health system integrated with on-device notifications and offline support for low-signal regions.</p>
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Mar 2026</div>
+                            <h4>Research Paper</h4>
+                            <p>Conference paper prepared and submitted based on project outcomes and methodology.</p>
                         </div>
                     </div>
 
@@ -624,17 +624,25 @@
                         <div class="tl-dot"></div>
                         <div class="tl-card">
                             <div class="tl-date"><i class="fa-regular fa-calendar"></i> Mar 2026</div>
-                            <h4>Research Paper &amp; Progress II</h4>
-                            <p>Research paper submitted, 90% completion demonstrated alongside the project poster presentation.</p>
+                            <h4>Progress Presentation II</h4>
+                            <p>90% project completion demonstrated with integrated platform and testing evidence.</p>
+                        </div>
+                    </div>
+                    <div class="tl-item reveal">
+                        <div class="tl-dot"></div>
+                        <div class="tl-card">
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Apr 2026</div>
+                            <h4>Final Thesis</h4>
+                            <p>The Final Report evaluates the entire project completed over the year. The marks outlined below account for both the individual and group submissions, as well as the overall Final Report.</p>
                         </div>
                     </div>
 
                     <div class="tl-item reveal">
                         <div class="tl-dot"></div>
                         <div class="tl-card">
-                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Apr 2026</div>
-                            <h4>Beta Launch</h4>
-                            <p>Closed beta of Travion rolled out to selected Sri Lankan tourists and feedback collected for final tuning of models and UX.</p>
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> April 2026</div>
+                            <h4>Website Assessment</h4>
+                            <p>The website serves as a promotional platform for our research project, providing comprehensive details and insights about its objectives, progress, and outcomes.</p>
                         </div>
                     </div>
 
@@ -650,9 +658,9 @@
                     <div class="tl-item reveal">
                         <div class="tl-dot"></div>
                         <div class="tl-card">
-                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> Jun 2026</div>
+                            <div class="tl-date"><i class="fa-regular fa-calendar"></i> May 2026</div>
                             <h4>Public Launch</h4>
-                            <p>Travion goes live on Play Store and App Store — empowering travellers from Colombo to Trincomalee with smart AI tour planning.</p>
+                            <p>Travion goes live on Play Store.</p>
                         </div>
                     </div>
                 </div>
@@ -729,7 +737,7 @@
                         <div class="mate-photo"><img src="assets/images/team_images/sup.jpg" alt="Dr. Sanvitha"></div>
                         <div class="mate-body">
                             <span class="role">Supervisor</span>
-                            <h4>Dr. Sanvitha</h4>
+                            <h4>Dr. Sanvitha Kasthuriarachchi </h4>
                             <p class="affil">Sri Lanka Institute of Information Technology, Malabe</p>
                             <div class="mate-social">
                                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -741,7 +749,7 @@
                         <div class="mate-photo"><img src="assets/images/team_images/sup.jpg" alt="Dr. Kapila"></div>
                         <div class="mate-body">
                             <span class="role">Co-Supervisor</span>
-                            <h4>Dr. Kapila</h4>
+                            <h4>Dr. Kapila Dissanayaka</h4>
                             <p class="affil">Sri Lanka Institute of Information Technology, Malabe</p>
                             <div class="mate-social">
                                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -753,7 +761,7 @@
                         <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr.Weerakkody"></div>
                         <div class="mate-body">
                             <span class="role">Team Leader — Smart Transport</span>
-                            <h4>Dr.Weerakkody</h4>
+                            <h4>Weerakkody S.E</h4>
                             <p class="affil">Sri Lanka Institute of Information Technology</p>
                             <div class="mate-social">
                                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -765,7 +773,7 @@
                         <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr. Sadeep"></div>
                         <div class="mate-body">
                             <span class="role">Team Member — RAG Chatbot</span>
-                            <h4>Dr. Sadeep</h4>
+                            <h4>Sadeep P.G.M</h4>
                             <p class="affil">Sri Lanka Institute of Information Technology</p>
                             <div class="mate-social">
                                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -777,7 +785,7 @@
                         <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr. jayasooriya"></div>
                         <div class="mate-body">
                             <span class="role">Team Member — Safety Alert</span>
-                            <h4>Dr. jayasooriya</h4>
+                            <h4>Jayasuriya D.S</h4>
                             <p class="affil">Sri Lanka Institute of Information Technology</p>
                             <div class="mate-social">
                                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -789,7 +797,7 @@
                         <div class="mate-photo"><img src="assets/images/team_images/mem.jpg" alt="Dr. Nirasha"></div>
                         <div class="mate-body">
                             <span class="role">Team Member — UV Health</span>
-                            <h4>Dr. Nirasha</h4>
+                            <h4>Nirasha H.M.S</h4>
                             <p class="affil">Sri Lanka Institute of Information Technology</p>
                             <div class="mate-social">
                                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
