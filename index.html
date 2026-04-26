@@ -359,14 +359,14 @@
         <div class="prob-card reveal reveal-l">
           <span class="badge"><i class="fa-solid fa-triangle-exclamation"></i>The Problem</span>
           <h3>Generic, globalised, context-blind.</h3>
-          <p>Existing travel platforms — from major booking aggregators to AI chatbots — treat Sri Lanka as a line item in a global index. They surface Western-leaning hotels, miss the rhythm of Buddhist poya days, ignore monsoon micro-climates, and provide no localised safety information for solo travellers, women, or trekkers.</p>
+          <p>Existing travel platforms from major booking aggregators to AI chatbots treat Sri Lanka as a line item in a global index. They surface Western-leaning hotels, miss the rhythm of Buddhist poya days, ignore monsoon micro-climates, and provide no localised safety information for solo travellers, women, or trekkers.</p>
           <p>Local travellers and inbound tourists alike report the same frustration: <strong>the island deserves better storytelling and smarter logistics.</strong></p>
         </div>
         <div class="prob-card solution reveal reveal-r">
           <span class="badge"><i class="fa-solid fa-sparkles"></i>Our Solution</span>
           <h3>A travel mind that grew up here.</h3>
-          <p>Travion is a mobile-first, AI-powered companion trained on Sri Lanka-specific data — from Department of Meteorology feeds to Sri Lanka Tourism Promotion Bureau guidelines, from crowd-sourced tuk-tuk fare maps to UNESCO heritage guidance.</p>
-          <p>It plans <span class="hl-gold">intelligent day-by-day itineraries</span>, watches the skies in real-time, recommends experiences locals actually endorse, and proactively warns you when a trail is unsafe or a train is overcrowded.</p>
+          <p>Travion is a unified AI-powered mobile platform integrating four intelligent modules into a single Sri Lanka-focused travel companion. It fuses real-time transit, traffic, weather and user preferences to optimise multi-modal routes with fair-fare prediction for tuk-tuks, buses and trains.</p>
+          <p>A RAG-based agentic chatbot grounded in a curated vector knowledge base of Sri Lankan destinations autonomously plans multi-day itineraries. A smart safety module uses AI-driven risk prediction based on historical crime data, crowdsourced incident reports, and geospatial context to generate real-time alerts, live risk heatmaps, and nearby police assistance recommendations for tourists, while the UV health system personalises sun-exposure and heatstroke guidance using satellite data, altitude and skin profile.</p>
         </div>
       </div>
     </div>
@@ -415,40 +415,53 @@
 
       <div class="lit-wrap">
         <article class="lit-card reveal">
-          <div class="lit-head"><span class="lit-num">01</span><h3 class="lit-title">AI-driven personalisation in tourism</h3></div>
-          <p class="lit-body">Recent surveys of recommendation systems in hospitality (Gretzel et al., 2020; Buhalis &amp; Sinarta, 2019) show that contextual AI — which blends user preferences with real-time signals such as weather, crowding and transit — outperforms static curated content for traveller satisfaction. However, almost all production systems rely on aggregated global data; regional specificity is treated as an afterthought.</p>
-          <details class="lit-refs"><summary>References</summary><ol>
-            <li>Gretzel, U. et al. (2020). Smart tourism: foundations and developments. Electronic Markets.</li>
-            <li>Buhalis, D. &amp; Sinarta, Y. (2019). Real-time co-creation and nowness service. Journal of Travel &amp; Tourism Marketing.</li>
-          </ol></details>
+          <div class="lit-head"><span class="lit-num">01</span><h3 class="lit-title">Smart Transportation Recommendation System</h3></div>
+          <p class="lit-body">Traditional transport recommenders such as Google Maps [1] and Moovit [2] provide route planning using static schedules and traffic data. However, they lack contextual adaptation for developing-country transport ecosystems such as Sri Lanka's mix of trains, buses, tuk-tuks and private hires. Recent work on multi-modal transit optimization [3] introduces graph-neural-network-based routing that accounts for real-time delays and crowd density. Study [4] proposes a reinforcement-learning fare predictor for informal transport in Southeast Asia, achieving 91 % accuracy on tuk-tuk pricing but limited to Bangkok only. A tourism-specific recommender [5] integrates weather and cultural-event calendars into route scoring, yet still relies on pre-computed timetables rather than live feeds. Existing systems fail to combine real-time multi-modal data with traveller preference learning and fair-fare prediction in a single Sri Lanka-focused module.</p>
+          
+          <details class="lit-refs"><summary>References</summary>
+          <ol>
+                                <li>Google LLC, "Google Maps Platform - Routes API," [Online]. Available: https://developers.google.com/maps/documentation/routes.</li>
+                                <li>Moovit Inc., "Moovit - Smart Public Transit App," [Online]. Available: https://moovit.com.</li>
+                                <li>Z. Wang, Y. Li and K. Chen, "GNN-Transit: Graph Neural Network Based Multi-Modal Route Optimization," IEEE Transactions on Intelligent Transportation Systems, vol. 24, no. 8, pp. 1–12, 2023.</li>
+                                <li>P. Chaikaew and S. Nontapa, "Reinforcement Learning-Based Fare Prediction for Informal Transit in Southeast Asia," Proceedings of the ACM SIGSPATIAL, 2022, pp. 45–54.</li>
+                                <li>A. Perera, D. Jayawardena and R. Gunawardena, "Context-Aware Tourist Route Recommender with Weather and Event Integration," 2023 International Conference on Advances in Computing (ICAC), pp. 112–118.</li>
+                            </ol></details>
         </article>
 
         <article class="lit-card reveal">
-          <div class="lit-head"><span class="lit-num">02</span><h3 class="lit-title">Sri Lankan tourism: opportunities &amp; pain points</h3></div>
-          <p class="lit-body">Sri Lanka Tourism Development Authority (SLTDA, 2023) reports 1.48 million inbound tourists in 2023 with strong post-pandemic recovery. Jayawardena (2013) and Ranasinghe (2019) identify persistent challenges: information asymmetry between operators and travellers, language barriers outside Colombo, and inconsistent safety communication. No existing digital product addresses these at national scale.</p>
+          <div class="lit-head"><span class="lit-num">02</span><h3 class="lit-title">RAG-Based Agentic Tour Planning Chatbot</h3></div>
+          <p class="lit-body">Conversational AI for tourism has evolved from rule-based chatbots [6] to large-language-model (LLM) assistants. ChatGPT-based travel planners [7] generate plausible itineraries but suffer from hallucinated facts and stale knowledge. Retrieval-Augmented Generation (RAG) [8] mitigates this by grounding LLM outputs in a curated vector knowledge base, dramatically improving factual accuracy. Agentic LLM frameworks such as LangGraph [9] and AutoGen [10] enable multi-step tool-use workflows where the model autonomously searches, books and re-plans. However, no existing system combines RAG with agentic tool-use specifically for Sri Lankan tourism - a domain that requires local cultural nuance, Sinhala/Tamil language support and integration with fragmented local booking APIs.</p>
           <details class="lit-refs"><summary>References</summary><ol>
-            <li>SLTDA Annual Statistical Report 2023.</li>
-            <li>Jayawardena, C. (2013). Innovative solutions for future tourism development. Worldwide Hospitality Review.</li>
-            <li>Ranasinghe, R. (2019). Destination branding of Sri Lanka post-conflict. Anatolia.</li>
-          </ol></details>
+                                <li>B. Abu Shawar and E. Atwell, "Chatbots: Are They Really Useful?," Journal for Language Technology and Computational Linguistics, vol. 22, no. 1, pp. 29–49, 2007.</li>
+                                <li>S. Mao, D. Mathew and R. Joshi, "ChatTravel: LLM-Powered Itinerary Generation — Promises and Pitfalls," ACM Conference on AI for Tourism, 2024, pp. 1–10.</li>
+                                <li>P. Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," Advances in Neural Information Processing Systems (NeurIPS), vol. 33, 2020.</li>
+                                <li>LangChain Inc., "LangGraph: Build Stateful Multi-Agent Applications," [Online]. Available: https://github.com/langchain-ai/langgraph.</li>
+                                <li>Q. Wu et al., "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation," arXiv preprint arXiv:2308.08155, 2023.</li>
+                            </ol></details>
         </article>
 
         <article class="lit-card reveal">
-          <div class="lit-head"><span class="lit-num">03</span><h3 class="lit-title">Conversational AI &amp; natural-language trip planning</h3></div>
-          <p class="lit-body">Advances in large language models (Brown et al., 2020; OpenAI, 2023) enable natural dialogue-based travel planning. Ivanov &amp; Webster (2021) document promising results for chatbot-driven concierge services, but highlight that domain-specific fine-tuning and retrieval augmentation are essential for factual accuracy in niche geographies.</p>
+          <div class="lit-head"><span class="lit-num">03</span><h3 class="lit-title">AI-Driven Safety Risk Prediction Systems</h3></div>
+          <p class="lit-body">Tourist safety systems range from government travel-advisory portals [11] to crowd-sourced incident apps like Citizen [12]. Geofencing-based alert platforms [13] trigger notifications when users enter predefined risk zones, while weather-event detection models [14] use LSTM networks to forecast flash floods with 87 % recall. Wildlife-proximity warning systems using IoT sensors have been deployed in African safari parks [15] but remain absent in Sri Lankan reserves such as Yala and Wilpattu, where elephant-human encounters are frequent. Current solutions are siloed: weather, wildlife and crime alerts exist on separate platforms with no unified real-time pipeline or offline fallback for low-connectivity wilderness areas.</p>
           <details class="lit-refs"><summary>References</summary><ol>
-            <li>Brown, T. et al. (2020). Language Models are Few-Shot Learners. NeurIPS.</li>
-            <li>Ivanov, S. &amp; Webster, C. (2021). Robots, Artificial Intelligence and Service Automation in Travel. Emerald.</li>
-          </ol></details>
+                                <li>U.S. Department of State, "Travel Advisories," [Online]. Available: https://travel.state.gov/content/travel/en/traveladvisories.</li>
+                                <li>Citizen App Inc., "Citizen — Connect and Stay Safe," [Online]. Available: https://citizen.com.</li>
+                                <li>M. Al-Turjman, "Geofencing-Based Safety Alert Framework for Smart Tourism," IEEE Internet of Things Journal, vol. 10, no. 4, 2023.</li>
+                                <li>R. Fernando and K. Silva, "LSTM-Based Flash Flood Prediction for Tropical River Basins," 2022 International Conference on Data Science (ICDS), pp. 201–207.</li>
+                                <li>J. Kamau, T. Otieno and L. Mwangi, "IoT-Enabled Wildlife Proximity Warning System for Safari Parks," Sensors, vol. 22, no. 12, 2022.</li>
+                            </ol></details>
         </article>
 
         <article class="lit-card reveal">
-          <div class="lit-head"><span class="lit-num">04</span><h3 class="lit-title">Safety, sustainability &amp; responsible travel tech</h3></div>
-          <p class="lit-body">Research on responsible tourism (Font &amp; McCabe, 2017) emphasises the role of digital platforms in steering travellers towards sustainable choices. UNWTO (2022) calls for tech solutions that support dispersal beyond over-touristed hotspots — critical in Sri Lanka, where Sigiriya and Ella face peak-season congestion while the North and East remain underserved.</p>
+          <div class="lit-head"><span class="lit-num">04</span><h3 class="lit-title">Smart High-UV Health Care System &amp;</h3></div>
+          <p class="lit-body">UV exposure monitoring has been explored through wearable sensors [16] and smartphone-based UV index estimators [17]. The WHO Global Solar UV Index [18] provides standardised daily readings but lacks personalised guidance based on skin type, altitude and activity duration. A dermatology-focused app [19] uses the Fitzpatrick scale and satellite UV data to recommend sunscreen SPF levels, achieving 94 % user satisfaction in Australian trials. However, it does not integrate hydration tracking or heatstroke risk assessment, which are critical in tropical climates. Study [20] introduces a multi-sensor fusion approach combining UV, temperature and humidity for real-time heat-stress alerts in outdoor workers but has not been adapted for tourism contexts. No existing system delivers holistic UV-plus-heat health guidance personalised to travellers in Sri Lanka's diverse climate zones — from humid coastal beaches to cool hill-country elevations.</p>
           <details class="lit-refs"><summary>References</summary><ol>
-            <li>Font, X. &amp; McCabe, S. (2017). Sustainability &amp; marketing in tourism. Journal of Sustainable Tourism.</li>
-            <li>UNWTO (2022). Tourism for Inclusive Growth.</li>
-          </ol></details>
+                                <li>L. Gao, Y. Zhang and H. Kim, "Wearable UV Dosimeters: A Systematic Review," Photochemistry and Photobiology, vol. 98, no. 3, pp. 512–525, 2022.</li>
+                                <li>D. Banerjee and P. Agrawal, "Smartphone-Based Real-Time UV Index Estimation Using Camera Sensors," IEEE Sensors Journal, vol. 21, no. 15, 2021.</li>
+                                <li>World Health Organization, "Global Solar UV Index: A Practical Guide," WHO/SDE/OEH/02.2, 2002.</li>
+                                <li>K. Thompson, M. Williams and R. Lee, "SunSafe: Personalised UV Protection App Using Fitzpatrick Skin Typing and Satellite Data," Australasian Journal of Dermatology, vol. 64, no. 2, 2023.</li>
+                                <li>H. Chen, J. Liu and W. Zhao, "Multi-Sensor Fusion for Real-Time Heat Stress Assessment in Outdoor Workers," Sensors, vol. 23, no. 8, 2023.</li>
+                            </ol></details>
         </article>
       </div>
     </div>
@@ -465,10 +478,10 @@
       </div>
 
       <div class="gap-grid">
-        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-language"></i></div><h4>Localisation deficit</h4><p>Almost no AI travel product supports Sinhala or Tamil natively. Travion is trilingual (EN · SI · TA) with code-switching awareness.</p></div>
-        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-cloud-bolt"></i></div><h4>Real-time context</h4><p>Generic apps show static landmark pages. Travion fuses Sri Lanka Met Department, traffic &amp; crowd feeds into live recommendations.</p></div>
-        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-shield-heart"></i></div><h4>Safety blind spots</h4><p>No national app gives women, solo trekkers and families zone-specific safety briefings. Travion does — hourly.</p></div>
-        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-compass"></i></div><h4>Discovery ceiling</h4><p>Top-10 lists trap tourists in the same hotspots. Travion's discovery engine surfaces under-visited gems in the North &amp; East.</p></div>
+        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-language"></i></div><h4>Lack of Context-Aware Multi-Modal Transport</h4><p>Current route planners rely on static schedules and ignore the informal transit systems, fair-fare prediction and real-time crowd/weather conditions unique to Sri Lanka's transport landscape.</p></div>
+        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-cloud-bolt"></i></div><h4>No Agentic RAG Chatbot for Sri Lankan Tourism</h4><p>Existing LLM travel assistants hallucinate facts and lack grounding in local Sri Lankan knowledge. No system combines RAG retrieval with autonomous tool-use agents for booking and re-planning.</p></div>
+        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-shield-heart"></i></div><h4>Weak Predictive Tourist Safety Support</h4><p>Most safety tools provide only reactive alerts. Predictive crime risk analysis with real-time mobile notifications for tourists is still limited.</p></div>
+        <div class="gap-card reveal"><div class="ico"><i class="fa-solid fa-compass"></i></div><h4>Absence of Personalised UV & Heat Health Guidance</h4><p>No tourism app delivers holistic sun-exposure and heatstroke guidance personalised to skin type, altitude and activity - critical in Sri Lanka's tropical climate zones from coast to hill country.</p></div>
       </div>
     </div>
   </section>
@@ -522,16 +535,15 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Our Objectives</span>
-        <h2 class="title">Five pillars, <span class="hl-ocean">one island.</span></h2>
-        <p class="lede">Our project objectives define the full scope of Travion — from intelligent planning to safety, from discovery to sustainable travel.</p>
+        <h2 class="title">Four pillars, <span class="hl-ocean">one island.</span></h2>
+        <p class="lede">Our project objectives define the full scope of Travion - from intelligent planning to safety, from discovery to sustainable travel.</p>
       </div>
 
       <div class="obj-list">
-        <div class="obj-row reveal"><div class="obj-num"><span>01</span></div><div class="obj-copy"><h4>Intelligent trip planning</h4><p>Generate personalised, day-by-day itineraries that respect weather, opening hours, pace preferences and cultural calendars — built in under 30 seconds.</p></div></div>
-        <div class="obj-row reveal"><div class="obj-num"><span>02</span></div><div class="obj-copy"><h4>Real-time safety &amp; weather</h4><p>Integrate live feeds from the Sri Lanka Department of Meteorology, police advisories and wildlife services to alert travellers of hazards in their current zone.</p></div></div>
-        <div class="obj-row reveal"><div class="obj-num"><span>03</span></div><div class="obj-copy"><h4>Trilingual local insight</h4><p>Deliver natural-language travel conversations in English, Sinhala and Tamil — with cultural context most AI products miss.</p></div></div>
-        <div class="obj-row reveal"><div class="obj-num"><span>04</span></div><div class="obj-copy"><h4>Transparent local economies</h4><p>Surface locally-owned homestays, tuk-tuk co-operatives and small restaurants — distributing tourist spend beyond chain hotels.</p></div></div>
-        <div class="obj-row reveal"><div class="obj-num"><span>05</span></div><div class="obj-copy"><h4>Sustainable dispersal</h4><p>Nudge travellers towards under-visited regions in the North and East, reducing congestion at flagship sites and broadening economic impact.</p></div></div>
+        <div class="obj-row reveal"><div class="obj-num"><span>01</span></div><div class="obj-copy"><h4>Smart multi-modal transportation recommendations</h4><p>A context-aware engine fuses real-time transit data, traffic, weather and traveller preferences to suggest optimal multi-modal routes across Sri Lanka. The system predicts fair tuk-tuk fares, train availability and intercity bus schedules, continuously re-planning when conditions change.</p></div></div>
+        <div class="obj-row reveal"><div class="obj-num"><span>02</span></div><div class="obj-copy"><h4>RAG-based agentic chatbot for autonomous tour planning</h4><p>A conversational AI agent backed by a curated Sri Lankan travel knowledge base using Retrieval-Augmented Generation. It autonomously plans multi-day itineraries, books activities, answers cultural queries and iteratively refines plans as the traveller's interests evolve - all through natural dialogue</p></div></div>
+        <div class="obj-row reveal"><div class="obj-num"><span>03</span></div><div class="obj-copy"><h4>AI-Driven Safety Risk Prediction and Real-Time Alerts</h4><p>Develop a smart safety module that uses historical crime data, crowdsourced incident reports, and geospatial context to predict tourist safety risks, generate real-time alerts, visualize danger zones through live heatmaps, and recommend nearby police assistance.</p></div></div>
+        <div class="obj-row reveal"><div class="obj-num"><span>04</span></div><div class="obj-copy"><h4>Personalized UV and heat health care for tropical travel</h4><p>Personalized sun-exposure coaching using satellite UV indices, altitude, humidity and the traveller's skin profile. The system sends hydration nudges, sunscreen reminders and heatstroke warnings so visitors stay healthy under the tropical sun - from Mirissa's coast to Adam's Peak.</p></div></div>
       </div>
     </div>
   </section>
@@ -601,13 +613,12 @@
           </div>
         </div>
         <div class="method-copy reveal reveal-r">
-          <p>Travion is built in an iterative, user-centred loop. We combine design thinking, on-the-ground user research in Sri Lanka, and modern ML engineering.</p>
+          <p>The methodology involves developing an AI-driven mobile platform called "Travion" that uses multi-modal AI technologies to plan, guide and protect tourists exploring Sri Lanka. A React Native front-end communicates with a FastAPI back-end that orchestrates LLM agents, vector databases of Sri Lankan points of interest, real-time transit and weather APIs, and on-device sensors for location and UV estimation.</p>
           <ul class="method-list">
-            <li><span class="mli-num">1</span><span class="mli-tx"><b>Discover.</b> Ethnographic interviews with 40 travellers and 20 local operators across the Cultural Triangle, South Coast, Hill Country and North.</span></li>
-            <li><span class="mli-num">2</span><span class="mli-tx"><b>Define.</b> Journey-map pain points, extract core jobs-to-be-done, align with SLTDA priorities.</span></li>
-            <li><span class="mli-num">3</span><span class="mli-tx"><b>Design.</b> Low-fi → high-fi prototypes in Figma, tested with real travellers in-situ.</span></li>
-            <li><span class="mli-num">4</span><span class="mli-tx"><b>Develop.</b> Flutter mobile + FastAPI backend + fine-tuned LLM with RAG over a curated Sri Lanka corpus.</span></li>
-            <li><span class="mli-num">5</span><span class="mli-tx"><b>Deliver.</b> Beta pilots in Colombo &amp; Kandy, iterate quarterly with tourism-board feedback.</span></li>
+            <li><span class="mli-num">1</span><span class="mli-tx"><b>Smart Transport</b> uses graph-based route optimisation over live transit feeds, reinforcement-learning fare prediction and predictive ETA models for multi-modal routing.</span></li>
+                            <li><span class="mli-num">2</span><span class="mli-tx"><b>RAG Chatbot</b> leverages LLM agents with a Pinecone vector DB, LangChain tool-use and autonomous re-planning workflows to generate and refine multi-day itineraries.</span></li>
+                            <li><span class="mli-num">3</span><span class="mli-tx"><b>Safety Risk Prediction Module</b> uses historical crime records, crowdsourced reports, GPS location data, and machine learning models to predict risks, trigger alerts, and recommend nearby police stations.</span></li>
+                            <li><span class="mli-num">4</span><span class="mli-tx"><b>UV Health</b> fuses satellite UV indices with altitude, humidity and Fitzpatrick skin-type profiles to generate personalised sun-exposure plans and heatstroke warnings.</span></li>
           </ul>
         </div>
       </div>
@@ -671,40 +682,68 @@
   </section>
 
   <!-- ============================================================
-       TECHNOLOGY — Orbit
-       ============================================================ -->
-  <section class="section" id="technology">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Technology Stack</span>
-        <h2 class="title">The engine under <span class="hl">the lotus.</span></h2>
-        <p class="lede">Modern, proven, production-grade — tuned for low-bandwidth mobile networks common across the island.</p>
+     TECHNOLOGY — Orbit (Travel Companion Research)
+     ============================================================ -->
+<section class="section" id="technology">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Technology Stack</span>
+      <h2 class="title">The intelligence behind <span class="hl">Travel Companion.</span></h2>
+      <p class="lede">
+        Modern AI-powered technologies designed to deliver smart travel planning,
+        safety insights, recommendations, and seamless user experiences for tourists in Sri Lanka.
+      </p>
+    </div>
+
+    <div class="tech-orbit reveal">
+      <div class="to-ring to-r1"></div>
+      <div class="to-ring to-r2"></div>
+
+      <div class="to-center">Travion<br>Core</div>
+
+      <div class="tchip" style="top:50%;left:5%">
+        <i class="fa-brands fa-react"></i>React Native
       </div>
 
-      <div class="tech-orbit reveal">
-        <div class="to-ring to-r1"></div>
-        <div class="to-ring to-r2"></div>
-        <div class="to-center">Travion<br>Core</div>
-        <div class="tchip" style="top:50%;left:5%"><i class="fa-brands fa-flutter"></i>Flutter</div>
-        <div class="tchip" style="top:15%;left:25%"><i class="fa-solid fa-brain"></i>GPT-4o</div>
-        <div class="tchip" style="top:15%;left:75%"><i class="fa-solid fa-database"></i>PostgreSQL</div>
-        <div class="tchip" style="top:50%;left:95%"><i class="fa-brands fa-python"></i>FastAPI</div>
-        <div class="tchip" style="top:85%;left:75%"><i class="fa-brands fa-aws"></i>AWS</div>
-        <div class="tchip" style="top:85%;left:25%"><i class="fa-solid fa-bolt"></i>Redis</div>
-        <div class="tchip" style="top:32%;left:50%"><i class="fa-solid fa-map-location-dot"></i>Mapbox</div>
-        <div class="tchip" style="top:68%;left:50%"><i class="fa-solid fa-cube"></i>LangChain</div>
+      <div class="tchip" style="top:15%;left:25%">
+        <i class="fa-brands fa-python"></i>Python
       </div>
 
-      <div class="tech-grid reveal" style="margin-top:40px">
-        <div class="tech"><i class="fa-brands fa-github"></i>GitHub Actions</div>
-        <div class="tech"><i class="fa-brands fa-docker"></i>Docker</div>
-        <div class="tech"><i class="fa-solid fa-cloud"></i>Cloudflare</div>
-        <div class="tech"><i class="fa-brands fa-figma"></i>Figma</div>
-        <div class="tech"><i class="fa-solid fa-chart-line"></i>Mixpanel</div>
-        <div class="tech"><i class="fa-solid fa-lock"></i>Auth0</div>
+      <div class="tchip" style="top:15%;left:75%">
+        <i class="fa-solid fa-brain"></i>Machine Learning
+      </div>
+
+      <div class="tchip" style="top:50%;left:95%">
+        <i class="fa-brands fa-node-js"></i>Node.js
+      </div>
+
+      <div class="tchip" style="top:85%;left:75%">
+        <i class="fa-solid fa-database"></i>MongoDB
+      </div>
+
+      <div class="tchip" style="top:85%;left:25%">
+        <i class="fa-solid fa-map-location-dot"></i>Google Maps API
+      </div>
+
+      <div class="tchip" style="top:32%;left:50%">
+        <i class="fa-solid fa-cloud-sun"></i>Weather API
+      </div>
+
+      <div class="tchip" style="top:68%;left:50%">
+        <i class="fa-solid fa-cloud"></i>Firebase
       </div>
     </div>
-  </section>
+
+    <div class="tech-grid reveal" style="margin-top:40px">
+      <div class="tech"><i class="fa-brands fa-github"></i>GitHub</div>
+      <div class="tech"><i class="fa-brands fa-docker"></i>Docker</div>
+      <div class="tech"><i class="fa-solid fa-cloud"></i>AWS / Azure</div>
+      <div class="tech"><i class="fa-brands fa-figma"></i>Figma</div>
+      <div class="tech"><i class="fa-solid fa-chart-line"></i>Power BI</div>
+      <div class="tech"><i class="fa-solid fa-lock"></i>JWT Auth</div>
+    </div>
+  </div>
+</section>
 
   <!-- ============================================================
        WIDGET — Safety Alerts
@@ -873,12 +912,15 @@
       </div>
 
       <div class="timeline reveal">
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Q1 2026 · Complete</div><h4>Research &amp; Discovery</h4><p>40-interview field study across five provinces. Academic literature review &amp; SLTDA stakeholder alignment.</p></div><div class="tl-dot"></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Q2 2026 · Complete</div><h4>Design &amp; Prototype</h4><p>Figma high-fidelity prototypes validated with 120 travellers. Design system locked.</p></div><div class="tl-dot"></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Q3 2026 · In progress</div><h4>MVP Development</h4><p>Flutter app, FastAPI backend, LLM+RAG engine. Integration with Met Dept &amp; transit APIs.</p></div><div class="tl-dot"></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Q4 2026 · Upcoming</div><h4>Closed Beta</h4><p>Pilot with 1,500 users in Colombo, Kandy &amp; Galle. Iterate on feedback, add Sinhala voice mode.</p></div><div class="tl-dot"></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Q1 2027 · Planned</div><h4>Public Launch</h4><p>App Store &amp; Google Play release. SLTDA partnership announcement. Tamil voice mode.</p></div><div class="tl-dot"></div></div>
-        <div class="tl-item"><div class="tl-card"><div class="tl-date">Q2+ 2027 · Vision</div><h4>Regional Expansion</h4><p>Feature partnerships with Maldives &amp; India as the first truly South-Asian travel intelligence platform.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Oct 2025 · Complete</div><h4>Project Proposal</h4><p>Initial concept for Travion drafted, Sri Lankan tourism domain research completed and project proposal approved.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Sep 2025 · Complete</div><h4>Design &amp; Prototype</h4><p>Figma high-fidelity prototypes validated with 120 travellers. Design system locked.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Jan 2026 · Complete</div><h4>Progress Presentation I</h4><p>50% completion milestone: transportation module + chatbot working end-to-end, demo'd to supervisors and review panel.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Mar 2026 · Complete</div><h4>Research Paper</h4><p>Conference paper prepared and submitted based on project outcomes and methodology.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Mar 2026 · Complete</div><h4>Progress Presentation II</h4><p>90% project completion demonstrated with integrated platform and testing evidence.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Apr 2026 · Complete</div><h4>Final Thesis</h4><p>The Final Report evaluates the entire project completed over the year. The marks outlined below account for both the individual and group submissions, as well as the overall Final Report.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">Apr 2026 · Complete</div><h4>Website Assessment</h4><p>The website serves as a promotional platform for our research project, providing comprehensive details and insights about its objectives, progress, and outcomes.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">May 2026 · Pending</div><h4>Final Presentation &amp; VIVA</h4><p>Project defended individually and as a team; final documentation and viva completed with full feature demonstration.</p></div><div class="tl-dot"></div></div>
+        <div class="tl-item"><div class="tl-card"><div class="tl-date">May 2026 · Pending</div><h4>Public Launch</h4><p>Travion goes live on Play Store.</p></div><div class="tl-dot"></div></div>
       </div>
     </div>
   </section>
@@ -896,24 +938,21 @@
       <div style="max-width:1080px;margin:0 auto 40px">
         <h4 style="margin-bottom:14px;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--ink-3);font-size:1rem;letter-spacing:0;text-transform:none">Research papers &amp; reports</h4>
         <div class="doc-grid">
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-file-lines"></i></div><div class="doc-t">Topic Assessment Form</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-book-open"></i></div><div class="doc-t">Project Proposal Report</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div class="doc-t">Literature Survey</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-flask"></i></div><div class="doc-t">Status Report 01</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-flask-vial"></i></div><div class="doc-t">Status Report 02</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-trophy"></i></div><div class="doc-t">Final Report</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-tags"></i></div><div class="doc-t">Research Paper</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">GIT</span><div class="doc-ic"><i class="fa-brands fa-github"></i></div><div class="doc-t">Source Code</div></a>
+          <a href="https://drive.google.com/file/d/17Sf3ZeIyvNdF4OXokpbkkx0hdi-SojV8/view" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-file-lines"></i></div><div class="doc-t">Topic Assessment Form</div></a>
+          <a href="https://drive.google.com/drive/u/0/folders/1yWpQHIx4wfOvwl14r411g8VLW3lNDhWW" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-book-open"></i></div><div class="doc-t">Project Proposal Report</div></a>
+          <a href="https://drive.google.com/drive/u/0/folders/1Kp7nx5CbQaj6qwzingXUTorlbxQvuCmn" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-trophy"></i></div><div class="doc-t">Final Report</div></a>
+          <a href="https://drive.google.com/file/d/1C5D81fEEDF7n3q-EW7Y3_vxxyy6XP0Gd/view" class="doc reveal" data-hover><span class="doc-tag">PDF</span><div class="doc-ic"><i class="fa-solid fa-tags"></i></div><div class="doc-t">Research Paper</div></a>
+          <a href="https://github.com/Travion-Reserch-Project" class="doc reveal" data-hover><span class="doc-tag">GIT</span><div class="doc-ic"><i class="fa-brands fa-github"></i></div><div class="doc-t">Source Code</div></a>
         </div>
       </div>
 
       <div style="max-width:1080px;margin:0 auto">
         <h4 style="margin-bottom:14px;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--ink-3);font-size:1rem;letter-spacing:0;text-transform:none">Presentations</h4>
         <div class="doc-grid pres-grid">
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Proposal Presentation</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Progress 01 Deck</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Progress 02 Deck</div></a>
-          <a href="#" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Final Presentation</div></a>
+          <a href="https://docs.google.com/presentation/d/1BXftDaPWFNtb3z-tYgd44lRVpIYo82MJ/edit?slide=id.p1#slide=id.p1" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Proposal Presentation</div></a>
+          <a href="https://docs.google.com/presentation/d/1-EFwd6cL7RTJQhDaCi9_9DfSIf0vjt92/edit?slide=id.p1#slide=id.p1" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Progress Presentation 1</div></a>
+          <a href="https://docs.google.com/presentation/d/1KLP_uMRzFupxv63diI29y-DCGwEwYGpG/edit?slide=id.p1#slide=id.p1" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Progress Presentation 2</div></a>
+          <a href="https://drive.google.com/drive/u/0/folders/1Il0wm2XRwicM4YpymJI00_f-jJuRC5AD" class="doc reveal" data-hover><span class="doc-tag">PPT</span><div class="doc-ic"><i class="fa-solid fa-display"></i></div><div class="doc-t">Final Presentation</div></a>
         </div>
       </div>
     </div>
@@ -1003,57 +1042,57 @@
 
       <div class="team-grid">
         <div class="mate reveal">
-          <div class="mate-photo"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=500&auto=format&fit=crop" alt="Supervisor"></div>
+          <div class="mate-photo"><img src="assets/images/team_images/image.png" alt="Supervisor"></div>
           <div class="mate-body">
             <span class="role">Supervisor</span>
-            <h4>Dr. Harinda Fernando</h4>
-            <p class="affil">Senior Lecturer · SLIIT</p>
-            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
+            <h4>Prof. Sanvitha Kasthuriarachchi</h4>
+            <p class="affil">Associate Professor · SLIIT</p>
+            <div class="mate-social"><a href="https://www.linkedin.com/in/sanvitha-kasthuriarachchi-31b50a37/"><i class="fa-brands fa-linkedin-in"></i></a><a href="sanvitha.k@sliit.lk"><i class="fa-solid fa-envelope"></i></a></div>
           </div>
         </div>
         <div class="mate reveal">
-          <div class="mate-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500&auto=format&fit=crop" alt="Co-Supervisor"></div>
+          <div class="mate-photo"><img src="assets/images/team_images/Co.jpg" alt="Co-Supervisor"></div>
           <div class="mate-body">
             <span class="role">Co-Supervisor</span>
-            <h4>Ms. Deepika Rathnayake</h4>
-            <p class="affil">Lecturer · SLIIT</p>
-            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
+            <h4>Dr. Kapila Dissanayaka</h4>
+            <p class="affil">Senior Lecturer · SLIIT</p>
+            <div class="mate-social"><a href="https://www.sliit.lk/academic/academic-staff/kapila.d"><i class="fa-brands fa-linkedin-in"></i></a><a href="kapila.d@sliit.lk"><i class="fa-solid fa-envelope"></i></a></div>
           </div>
         </div>
         <div class="mate reveal">
-          <div class="mate-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500&auto=format&fit=crop" alt="Leader"></div>
+          <div class="mate-photo"><img src="assets/images/team_images/Leader.jpeg" alt="Leader"></div>
           <div class="mate-body">
-            <span class="role">Project Leader</span>
-            <h4>Dilshan Perera</h4>
-            <p class="affil">AI &amp; Full-stack</p>
-            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-github"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
+            <span class="role">Team Leader</span>
+            <h4>Weerakkody S.E</h4>
+            <p class="affil">Sri Lanka Institute of Information Technology</p>
+            <div class="mate-social"><a href="https://www.linkedin.com/in/sahanerandikaweerakkody/"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/iamsahan"><i class="fa-brands fa-github"></i></a><a href="weerakkodyse@gmail.com "><i class="fa-solid fa-envelope"></i></a></div>
           </div>
         </div>
         <div class="mate reveal">
-          <div class="mate-photo"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=500&auto=format&fit=crop" alt="Member"></div>
+          <div class="mate-photo"><img src="assets/images/team_images/Malaka.jpeg" alt="Member"></div>
           <div class="mate-body">
-            <span class="role">Mobile Lead</span>
-            <h4>Sanduni Wijesinghe</h4>
-            <p class="affil">Flutter · UX Research</p>
-            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-github"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
+            <span class="role">Team Member</span>
+            <h4>Sadeep P.G.M</h4>
+            <p class="affil">Sri Lanka Institute of Information Technology</p>
+            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/malakasadeep"><i class="fa-brands fa-github"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
           </div>
         </div>
         <div class="mate reveal">
-          <div class="mate-photo"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=500&auto=format&fit=crop" alt="Member"></div>
+          <div class="mate-photo"><img src="assets/images/team_images/dewni(1).jpeg" alt="Member"></div>
           <div class="mate-body">
-            <span class="role">Backend Engineer</span>
-            <h4>Kavindu Rathnayake</h4>
-            <p class="affil">FastAPI · ML Ops</p>
-            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-github"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
+            <span class="role">Team Member</span>
+            <h4>Jayasuriya D.S</h4>
+            <p class="affil">Sri Lanka Institute of Information Technology</p>
+            <div class="mate-social"><a href="https://www.linkedin.com/in/dewni-jayasuriya-66bb47316/"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/dewnijayasuriya"><i class="fa-brands fa-github"></i></a><a href="dewnijayasuriya123@gmail.com"><i class="fa-solid fa-envelope"></i></a></div>
           </div>
         </div>
         <div class="mate reveal">
-          <div class="mate-photo"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=500&auto=format&fit=crop" alt="Member"></div>
+          <div class="mate-photo"><img src="assets/images/team_images/Shadini.jpeg" alt="Member"></div>
           <div class="mate-body">
-            <span class="role">UX &amp; Research</span>
-            <h4>Tharushi Silva</h4>
-            <p class="affil">Design · Field research</p>
-            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-github"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div>
+            <span class="role">Team Member</span>
+            <h4>Nirasha H.M.S</h4>
+            <p class="affil">Sri Lanka Institute of Information Technology</p>
+            <div class="mate-social"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/ShadiniMalawige"><i class="fa-brands fa-github"></i></a><a href="shadininirasha31@gmail.com"><i class="fa-solid fa-envelope"></i></a></div>
           </div>
         </div>
       </div>
