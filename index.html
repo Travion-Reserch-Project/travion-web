@@ -2333,14 +2333,14 @@
           >
             <h4>Drop us a line</h4>
             <div class="field">
-              <input type="text" required placeholder="Your name" />
+              <input type="text" name="name" required placeholder="Your name" />
             </div>
             <div class="field">
-              <input type="email" required placeholder="Email" />
+              <input type="email" name="email" required placeholder="Email" />
             </div>
-            <div class="field"><input type="text" placeholder="Subject" /></div>
+            <div class="field"><input type="text" name="subject" placeholder="Subject" /></div>
             <div class="field">
-              <textarea rows="4" placeholder="Tell us what you need"></textarea>
+              <textarea name="message" rows="4" required placeholder="Tell us what you need"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">
               Send message <span class="arrow">→</span>
@@ -2414,5 +2414,166 @@
     ></a>
 
     <script src="assets/js/app.js"></script>
+
+    <!-- EmailJS contact form (sends to sadeepmalaka2@gmail.com + auto-reply to sender) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      (function () {
+        const EMAILJS_PUBLIC_KEY = "SRag4joqTCp6WA89F";
+        const EMAILJS_SERVICE_ID = "service_ppwkw9d";
+        const EMAILJS_NOTIFY_TEMPLATE = "template_ahc13hm";
+        const EMAILJS_AUTOREPLY_TEMPLATE = "template_hq55i48";
+        const ADMIN_EMAIL = "sadeepmalaka2@gmail.com";
+
+        if (!window.emailjs) {
+          console.error("[Travion] EmailJS SDK failed to load.");
+          return;
+        }
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+        const form = document.getElementById("contactForm");
+        const note = document.getElementById("formNote");
+        if (!form) return;
+
+        function setNote(msg, ok) {
+          note.textContent = msg;
+          note.style.color = ok ? "#2d6b3e" : "#e85d3c";
+        }
+
+        form.addEventListener(
+          "submit",
+          async function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            // Capture values FIRST before anything else can reset the form
+            const data = new FormData(form);
+            const name = (data.get("name") || "").toString().trim();
+            const email = (data.get("email") || "").toString().trim();
+            const subject =
+              (data.get("subject") || "").toString().trim() ||
+              "New message from Travion website";
+            const message = (data.get("message") || "").toString().trim();
+
+            console.log("[Travion] Form submitted. Captured:", {
+              name,
+              email,
+              subject,
+              message,
+            });
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalLabel = submitBtn ? submitBtn.innerHTML : "";
+            const restoreBtn = function () {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalLabel;
+              }
+            };
+            if (submitBtn) {
+              submitBtn.disabled = true;
+              submitBtn.innerHTML = "Sending…";
+            }
+            setNote("", true);
+
+          if (!name || !email || !message) {
+            setNote("Please fill in your name, email, and message.", false);
+            restoreBtn();
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setNote("Please enter a valid email address.", false);
+            restoreBtn();
+            return;
+          }
+
+          // Notification → admin inbox
+          const adminParams = {
+            to_email: ADMIN_EMAIL,
+            to_name: "Travion Team",
+            admin_email: ADMIN_EMAIL,
+            from_name: name,
+            from_email: email,
+            reply_to: email,
+            name: name,
+            email: email,
+            user_name: name,
+            user_email: email,
+            subject: subject,
+            title: subject,
+            message: message,
+          };
+
+          // Auto-reply → sender inbox
+          const autoReplyParams = {
+            to_email: email,
+            to_name: name,
+            email: email,
+            user_email: email,
+            name: name,
+            user_name: name,
+            from_name: "Travion Team",
+            from_email: ADMIN_EMAIL,
+            reply_to: ADMIN_EMAIL,
+            subject: "Thanks for contacting Travion",
+            title: "Thanks for contacting Travion",
+            message: message,
+          };
+
+          console.log("[Travion] Sending notification to admin:", adminParams);
+          try {
+            const r1 = await emailjs.send(
+              EMAILJS_SERVICE_ID,
+              EMAILJS_NOTIFY_TEMPLATE,
+              adminParams
+            );
+            console.log("[Travion] Notification OK:", r1);
+          } catch (err) {
+            console.error("[Travion] Notification FAILED:", err);
+            setNote(
+              "Couldn't send your message (notification step). " +
+                (err && (err.text || err.message)
+                  ? "Reason: " + (err.text || err.message)
+                  : "Please email " + ADMIN_EMAIL + " directly."),
+              false
+            );
+            restoreBtn();
+            return;
+          }
+
+          console.log("[Travion] Sending auto-reply to sender:", autoReplyParams);
+          try {
+            const r2 = await emailjs.send(
+              EMAILJS_SERVICE_ID,
+              EMAILJS_AUTOREPLY_TEMPLATE,
+              autoReplyParams
+            );
+            console.log("[Travion] Auto-reply OK:", r2);
+          } catch (err) {
+            console.warn("[Travion] Auto-reply FAILED (notification still sent):", err);
+            setNote(
+              "Message received! (Confirmation email couldn't be delivered to " +
+                email +
+                " — but the team has your message.)",
+              true
+            );
+            form.reset();
+            restoreBtn();
+            return;
+          }
+
+          setNote(
+            "Thanks " +
+              name +
+              "! Your message has been sent and a confirmation is on its way to " +
+              email +
+              ".",
+            true
+          );
+          form.reset();
+          restoreBtn();
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -573,18 +573,6 @@
     });
   }
 
-  /* =======================================================
-     Contact form (mock)
-     ======================================================= */
-  const cf = document.getElementById('contactForm');
-  if (cf) {
-    cf.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const note = document.getElementById('formNote');
-      note.textContent = 'Thank you! Your message has been received — we will reply within 48h.';
-      cf.reset();
-      setTimeout(() => note.textContent = '', 6000);
-    });
-  }
+  /* Contact form is handled by the EmailJS block in index.html */
 
 })();
